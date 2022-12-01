@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 
 function Search({onSearch}) {
 
-
+    const navigate = useNavigate();
 
 
 const [title,setTitle] = useState("")
@@ -15,9 +15,13 @@ const onSearchChange = event => {
     
 }
 
+
+
 const onSubmit = event => {
     event.preventDefault();
     onSearch(title)
+    navigate('/searchPage')
+    
 }
 
 

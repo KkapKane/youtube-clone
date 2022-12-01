@@ -1,0 +1,82 @@
+.sideBar {
+    display: flex;
+    flex-direction: column;
+
+    height: 90vh;
+    width: 10%;
+    background-color: black;
+    position: absolute;
+    color: white;
+    overflow: hidden;
+    overflow-y: auto;
+    flex: 1;
+    flex-basis: 1e-9px;
+    left: 0;
+    position: fixed;
+    top: 50px;
+    gap: 12px;
+    padding: 20px;
+
+    #sideTab {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: 400px;
+        line-height: 24px;
+        padding: 5px 12px;
+        height: 35px;
+        width: 100%;
+        align-items: center;
+        cursor: pointer;
+     
+    }
+    
+
+    .home {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 12px;
+    }
+
+    .libraryHistory {
+        display: flex;
+        flex-direction: column;
+        border-top: 2px solid white;
+        justify-content: center;
+        height: 4rem;
+        padding: 0px 12px;
+    }
+
+    .explore {
+        display: flex;
+        flex-direction: column;
+        border-top: 2px solid white;
+        padding: 0px 12px;
+    }
+
+    .browseChannel {
+        display: flex;
+   
+        align-items: center;
+     
+        height: 3rem;
+        padding: 0px 12px;
+        
+    }
+
+    .Settings {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        height: 10rem;
+        padding: 0px 12px;
+    }
+
+    .moreFromYoutube {
+        .icon {
+            color: red;
+        }
+    }
+}

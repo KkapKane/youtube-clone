@@ -1,12 +1,17 @@
 import Search from "./components/search";
 import youtube from "./youtube";
 import React, {useState} from "react";
-
+import { Route, Routes } from "react-router-dom"
+import SearchPage from "./components/searchPage";
+import HomePage from "./components/homePage";
+import SideBar from "./components/sideBar";
+import TopBar from "./components/topbar";
 
 function App() {
 
   const [videoData, setVideoData] = useState({})
   const [loading,setLoading] = useState(false)
+
   async function onSearch (keyword) {
    
     const response = await youtube.get("/search", {
@@ -21,28 +26,24 @@ function App() {
   })
   setLoading(true)
   console.log(videoData.videoMetaInfo)
-  .catch((e)=> console.log(e))
+  .catch((error) => console.log(error))
   .finally(() => setLoading(false))
 }
 
-var watchLink = 'https://youtube.com/watch?v='
+
 
   return (
     <div className="App">
-    {loading ? videoData.videoMetaInfo.map((vid)=>{
-      return (
-        <>
-        {console.log(vid)}
-        <h1>{vid.snippet.channelTitle}</h1>
-        <h5>{vid.snippet.title}</h5>
-        <a href={`https://youtube.com/watch?v=${vid.id.videoId}`}>test</a>
-        <img src={vid.snippet.thumbnails.default.url} alt="" />
-        
+
+
     
-        </>
-      )
-    }) : null}
-    <Search onSearch={onSearch}/>
+    <TopBar onSearch={onSearch}/>
+    <SideBar />
+    <Routes>
+    <Route path="/" element={ <HomePage/>} />
+    <Route path="/searchPage" element={<SearchPage videoData={videoData} loading={loading}/>} />
+    </Routes>
+    
     </div>
   );
 }
