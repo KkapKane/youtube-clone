@@ -4,11 +4,12 @@
 
     height: 90vh;
     width: 10%;
-    background-color: black;
+    
     position: absolute;
-    color: white;
+    color: black;
+    
     overflow: hidden;
-    overflow-y: auto;
+
     flex: 1;
     flex-basis: 1e-9px;
     left: 0;
@@ -16,6 +17,11 @@
     top: 50px;
     gap: 12px;
     padding: 20px;
+
+    &:hover {
+        overflow-y: auto;
+        
+    }
 
     #sideTab {
         display: flex;

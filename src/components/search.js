@@ -26,7 +26,7 @@ const onSubmit = event => {
 
 
     return (
-        <div>
+        <div className="Search">
         <form onSubmit={onSubmit}>
         <input onChange={onSearchChange} id="video-Search" type="text" placeholder="Search"/>
         </form>

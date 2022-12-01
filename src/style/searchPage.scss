@@ -1,0 +1,55 @@
+.searchPage {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+    .searchResult {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        width: 50%;
+        height: 15rem;
+        
+        justify-content: center;
+
+        .channelImg{
+            height: 50%; 
+            border-radius: 205px;
+        }
+
+        .videoImg {
+            height: 100%;
+            border-radius: 15px;
+        }
+    }
+
+    .test {
+        display: flex;
+        align-items: center;
+
+        .videoInfo {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .description {
+              
+                font-family: "Roboto","Arial",sans-serif;
+                font-size: 1.2rem;
+                line-height: 2.6rem;
+                font-weight: 400;
+                max-height: 5.2rem;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                white-space: normal;
+
+
+            }
+        }
+    }
+}

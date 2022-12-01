@@ -1,6 +1,6 @@
 import Search from "./components/search";
 import youtube from "./youtube";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom"
 import SearchPage from "./components/searchPage";
 import HomePage from "./components/homePage";
@@ -30,7 +30,9 @@ function App() {
   .finally(() => setLoading(false))
 }
 
-
+useEffect(()=> {
+onSearch('Mike Chen')
+}, [])
 
   return (
     <div className="App">
