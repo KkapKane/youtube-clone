@@ -50,6 +50,28 @@
 
 
             }
+
+            
+                
+           
+        
         }
     }
+}
+
+.channelInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    .videoChannelImg{
+              
+        width: 24px;
+        border-radius: 100px;
+    }
+
+    a {
+        font-size: .7rem;
+        text-decoration: none;
+    }
+
 }
