@@ -20,6 +20,7 @@ const [subCount,setSubCount] = useState()
 const [channelPic,setChannelPic] = useState()
 const [viewCount,setViewCount] = useState()
 const [loading,setLoading] = useState(false)
+
 const [duration,setDuration] = useState({ 
   hours: 0,
   minutes: 0,
@@ -92,11 +93,9 @@ const [duration,setDuration] = useState({
         }
       })
       const d = moment.duration(response2.data.items[0].contentDetails.duration)
-      // console.log(d._data)
+     
       setDuration({...duration, seconds: d._data.seconds, minutes: d._data.minutes, hours: d._data.hours})
-      // Object.entries(d._data).map((x)=>{
-      //   console.log(x.seconds)
-      // })
+    
       
       setLoading(false)
       
@@ -110,7 +109,7 @@ const [duration,setDuration] = useState({
       useEffect(()=>{
         
         if(vid.id.kind == 'youtube#video'){
-        // console.log(vid.snippet.channelId)
+      
         ChannelImg(vid.snippet.channelId)
         grabVidInfo(vid.id.videoId)
     
@@ -126,7 +125,7 @@ const [duration,setDuration] = useState({
 
     return (
       
-       <div className="searchResult" style={vid.id.kind == 'youtube#channel' ? {borderTop:'1px solid grey',borderBottom:'1px solid grey'} : {}}>
+       <div className="searchResult" style={vid.id.kind == 'youtube#channel' ? {borderTop:'1px solid #cccccc',borderBottom:'1px solid #cccccc'} : {}}>
          {!loading ? <div className="test">     
         
          {vid.id.kind =='youtube#channel' ? 
