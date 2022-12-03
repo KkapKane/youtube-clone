@@ -2,18 +2,21 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    align-items: center;
+    margin-inline: auto;
     justify-content: center;
-    padding: 2rem;
+    padding: max(10vh,2rem);
     
     .searchResult {
         display: flex;
+        margin-inline: auto;
+     
         flex-direction: column;
-        
-        width: 50%;
+        padding: 1rem;
+        flex: 0;
+        width: max(50vw, 20rem);
         height: 12rem;
         
-        justify-content: center;
+      
 
         .channelImg{
             height: 150px; 
@@ -29,23 +32,45 @@
     .test {
         display: flex;
         align-items: center;
+        width: max(30vw, 80rem);
+        
+        
+        
+        .thumbnailDuration {
+            display: flex;
+           
+            flex-direction: column;
+            position: relative;
+            
+       .duration{
+    
+        position: absolute;
+        bottom: 5%;
+        left: 85%;
+        font-size: .8rem;
+        width: 35px;
+        color: white;
+        background-color: rgba($color: #000000, $alpha: .6);
+       } 
+    }
 
         .videoInfo {
             display: flex;
-            height: 100%;
-            padding: 1rem;
-            gap: 1rem;
+            height: 12rem;
+            width: max(20vw, 600px);
+            padding-left: 1rem;
+            justify-content: center;
             flex-direction: column;
-            justify-content: flex-start;
+          
+            text-overflow: ellipsis;
 
             .vidTitle {
-              
+                display: flex;
                 font-family: "Roboto","Arial",sans-serif;
-                font-size: 1.2rem;
+                font-size: clamp(1.2rem, 1vw + .2rem, 5rem);
                 line-height: 1.6rem;
                 font-weight: 400;
-                max-height: 5.2rem;
-                overflow: hidden;
+           
                 -webkit-box-orient: vertical;
                 text-overflow: ellipsis;
                 white-space: normal;
@@ -69,7 +94,8 @@
             .viewDate {
                 font-size: .8rem;
                 display: flex;
-                gap: .8rem;
+                align-items: center;
+                gap: .3rem;
             }
 
         }

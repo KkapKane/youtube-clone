@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
-
+import {AiOutlineSearch} from 'react-icons/ai'
 
 function Search({onSearch}) {
 
@@ -29,7 +29,11 @@ const onSubmit = event => {
         <div className="Search">
         <form onSubmit={onSubmit}>
         <input onChange={onSearchChange} id="video-Search" type="text" placeholder="Search"/>
+        <div onClick={onSubmit} className="searchIcon">
+        <AiOutlineSearch/>
+        </div>
         </form>
+        
         </div>
     )
 }

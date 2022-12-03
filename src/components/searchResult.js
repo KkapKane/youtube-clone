@@ -2,22 +2,29 @@
 import React, {useState, useEffect} from "react"
 import youtube from "../youtube";
 import ConvertToM from "../functions/kFormatter";
+const td = require("tinyduration")
 var moment = require('moment'); // require
 
 
 export default function SearchResult({vid}) {
-   
+
 const channelLink = 'https://youtube.com/channel/' + vid.id.channelId;
 const channelLink2 = 'https://youtube.com/channel/' + vid.snippet.channelId;
 const videoLink =  'https://youtube.com/watch?v=' + vid.id.videoId;
 const imgSrc = vid.snippet.thumbnails.medium.url;
-
 const timeAgo = moment(vid.snippet.publishedAt).fromNow(); 
+
+
 
 const [subCount,setSubCount] = useState()
 const [channelPic,setChannelPic] = useState()
 const [viewCount,setViewCount] = useState()
 const [loading,setLoading] = useState(false)
+const [duration,setDuration] = useState({ 
+  hours: 0,
+  minutes: 0,
+  seconds: 0
+})
 
   
 
@@ -31,7 +38,7 @@ const [loading,setLoading] = useState(false)
           maxResults:1,
         }
       })
-      console.log(response)
+      
       setChannelPic(response.data.items[0].snippet.thumbnails.default.url)
       
       
@@ -75,7 +82,7 @@ const [loading,setLoading] = useState(false)
           maxResults:1,
         }
       })
-      console.log(response)
+    
       setViewCount(response.data.items[0].statistics.viewCount)
       const response2 = await youtube.get("/videos", {
         params: {
@@ -84,7 +91,13 @@ const [loading,setLoading] = useState(false)
           maxResults:1
         }
       })
-      console.log(response2)
+      const d = moment.duration(response2.data.items[0].contentDetails.duration)
+      // console.log(d._data)
+      setDuration({...duration, seconds: d._data.seconds, minutes: d._data.minutes, hours: d._data.hours})
+      // Object.entries(d._data).map((x)=>{
+      //   console.log(x.seconds)
+      // })
+      
       setLoading(false)
       
     }
@@ -100,8 +113,7 @@ const [loading,setLoading] = useState(false)
         // console.log(vid.snippet.channelId)
         ChannelImg(vid.snippet.channelId)
         grabVidInfo(vid.id.videoId)
-
-        console.log(subCount)
+    
         
         }
         else if(vid.id.kind == 'youtube#channel'){
@@ -109,9 +121,12 @@ const [loading,setLoading] = useState(false)
         }
       },[])
 
+
+  
+
     return (
       
-       <div className="searchResult">
+       <div className="searchResult" style={vid.id.kind == 'youtube#channel' ? {borderTop:'1px solid grey',borderBottom:'1px solid grey'} : {}}>
          {!loading ? <div className="test">     
         
          {vid.id.kind =='youtube#channel' ? 
@@ -122,18 +137,28 @@ const [loading,setLoading] = useState(false)
          </a>
           :
            
+          <div className="thumbnailDuration">
           <a href={videoLink}>
           
-            <img className="videoImg" src={imgSrc} alt="" />  
+            <img className="videoImg" src={imgSrc} alt="" 
+            
+
+            />  
+            {duration.seconds > 10 ? <div className="duration">{duration.minutes}:{duration.seconds} </div> : <div className="duration">{duration.minutes}:0{duration.seconds} </div>}
+
+        </a>
+        </div>
         
-        </a>}
+        }
 
         
         <div className="videoInfo">
           
-        <div className="vidTitle">{vid.snippet.title}</div>
-        {vid.id.kind == 'youtube#channel' ? <div className="description">
-        <div style={{color:'black'}}>{ConvertToM(subCount)} subscribers</div>
+        
+      {vid.id.kind =='youtube#video' ? <a href={videoLink}><div className="vidTitle">{vid.snippet.title}</div> </a> : 
+      <a href={channelLink}><div className="vidTitle">{vid.snippet.title}</div> </a>}
+      {vid.id.kind == 'youtube#channel' ? <div style={{fontSize:'.8rem'}} className="description">
+      <div style={{color:'black'}}>{ConvertToM(subCount)} subscribers</div>
  
         {vid.snippet.description}</div> : null}
         
@@ -145,7 +170,7 @@ const [loading,setLoading] = useState(false)
       {vid.id.kind == 'youtube#video' ? 
       <div className="videoInfoBox"> 
         <div className="viewDate">
-          <div className="view">{ConvertToM(viewCount)} views</div>
+          <div className="view">{ConvertToM(viewCount)} views</div>•
           <div className="date">{timeAgo}</div>
         </div>
         <div className="smallChannelInfo">

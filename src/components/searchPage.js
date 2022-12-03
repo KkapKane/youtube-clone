@@ -8,7 +8,7 @@ export default function SearchPage({loading, videoData}) {
     
 
     return (
-        <div className="searchPage">SEARCH PAGE
+        <div className="searchPage">
 
         {loading ? videoData.videoMetaInfo.map((vid)=>{
             

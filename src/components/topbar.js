@@ -1,5 +1,6 @@
 import Search from "./search";
 import '../style/topbar.scss'
+
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {SiYoutube} from 'react-icons/si'
 
@@ -8,9 +9,11 @@ export default function TopBar({onSearch}) {
         <div className="topBar">
             <div className="hamburgerLogo">
             <GiHamburgerMenu size={25} className="hamburger"/>
-            <SiYoutube size={40} color='red'/>
+            <div className="youtubeLogo">
+            <SiYoutube size={40} color='red'/> <div>YouTube</div>
             </div>
-            <Search onSearch={onSearch}/>
+            </div>
+            <Search onSearch={onSearch}/> 
         </div>
     )
 }
