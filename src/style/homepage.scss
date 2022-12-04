@@ -1,15 +1,16 @@
 .HomePage {
     display: flex;
     justify-content: center;
-    
-    padding-left: 10rem;
-    width: 100%;
+  
+    padding-left: 15rem;
+
+   
 
   .HomePageContent {
     display: flex;
+
     padding: 6rem;
     gap: 4rem;
-    min-width: 80%;
     flex-wrap: wrap;
     margin-inline: auto;
 
@@ -64,7 +65,7 @@
    .duration {
     position: absolute;
         bottom: 6%;
-        left: 90%;
+        left: 100%;
         font-size: .8rem;
         width: 35px;
         color: white;

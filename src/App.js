@@ -9,9 +9,10 @@ import TopBar from "./components/topbar";
 
 function App() {
 
-  const [videoData, setVideoData] = useState({})
+  const [videoData, setVideoData] = useState([])
   const [loading,setLoading] = useState(false)
   const [isHomePage,setHomePage] = useState(true)
+
   async function onSearch (keyword) {
 
    
@@ -23,10 +24,7 @@ function App() {
     }
   })
 
-  setVideoData({
-    videoMetaInfo: response.data.items,
-    selectedVideoId: response.data.items[0].id.videoId
-  })
+  setVideoData(response.data.items)
   setLoading(true)
    
 

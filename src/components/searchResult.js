@@ -22,6 +22,7 @@ export default function SearchResult({ vid, isHomePage }) {
   const [channelPic, setChannelPic] = useState()
   const [viewCount, setViewCount] = useState()
   const [loading, setLoading] = useState(false)
+  
 
   const [duration, setDuration] = useState({
     hours: 0,
