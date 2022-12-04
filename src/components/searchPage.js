@@ -1,11 +1,13 @@
 import SearchResult from "./searchResult"
 import '../style/searchPage.scss'
-import youtube from "../youtube";
+
 import React, {useState, useEffect} from "react";
 
-export default function SearchPage({loading, videoData}) { 
+export default function SearchPage({loading, videoData, isHomePage, setHomePage}) { 
 
-    
+    useEffect(()=> {
+        setHomePage(false)
+    }, [])
 
     return (
         <div className="searchPage">
@@ -14,7 +16,7 @@ export default function SearchPage({loading, videoData}) {
             
             return (
                 
-           <SearchResult vid={vid} key={vid.id.videoId}/>
+           <SearchResult vid={vid} key={vid.id.videoId} isHomePage={isHomePage} setHomePage={setHomePage}/>
             
            
            )

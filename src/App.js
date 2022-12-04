@@ -11,7 +11,7 @@ function App() {
 
   const [videoData, setVideoData] = useState({})
   const [loading,setLoading] = useState(false)
-
+  const [isHomePage,setHomePage] = useState(true)
   async function onSearch (keyword) {
 
     const response = await youtube.get("/search", {
@@ -41,8 +41,12 @@ function App() {
     <TopBar onSearch={onSearch}/>
     <SideBar />
     <Routes>
-    <Route path="/" element={ <HomePage/>} />
-    <Route path="/searchPage" element={<SearchPage videoData={videoData} loading={loading}/>} />
+    <Route path="/" element={ <HomePage isHomePage={isHomePage} setHomePage={setHomePage}/>} />
+    <Route path="/searchPage" element={<SearchPage 
+    videoData={videoData} 
+    loading={loading} 
+    isHomePage={isHomePage} 
+    setHomePage={setHomePage}/>} />
     </Routes>
     
     </div>
