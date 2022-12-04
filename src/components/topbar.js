@@ -14,7 +14,7 @@ export default function TopBar({onSearch}) {
             <div className="hamburgerLogo">
             <GiHamburgerMenu size={25} className="hamburger"/>
             <div onClick={()=>navigate('/')} className="youtubeLogo">
-            <SiYoutube size={40} color='red'/> <div>YouTube</div>
+            <SiYoutube size={30} color='red'/> <div style={{fontSize: '1rem'}}>YouTube</div>
             </div>
             </div>
             <Search onSearch={onSearch}/> 

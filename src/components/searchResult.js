@@ -134,21 +134,21 @@ export default function SearchResult({ vid, isHomePage }) {
 
 
   return (
-  
 
 
-    
-    <div className="searchResult" style={vid.id.kind == 'youtube#channel' ? { borderTop: '1px solid #cccccc', borderBottom: '1px solid #cccccc' } : {}}>
-  
 
-           
+
+    <div className="searchResult" style={resultType == 'youtube#channel' ? { borderTop: '1px solid #cccccc', borderBottom: '1px solid #cccccc' } : {}}>
+
+
+
       {!loading ? <div className="test">
         {resultType == 'youtube#channel' ? <a href={channelLink}> <img className="channelImg" src={imgSrc} alt="" /> </a> :
 
           <div className="thumbnailDuration"><a href={videoLink}>
-            <img className="videoImg" src={imgSrc} alt=""/>
+            <img className="videoImg" src={imgSrc} alt="" />
             {duration.seconds > 10 ? <div className="duration">{duration.minutes}:{duration.seconds} </div> : <div className="duration">{duration.minutes}:0{duration.seconds} </div>}
-            </a>
+          </a>
           </div>
 
         }
@@ -157,7 +157,7 @@ export default function SearchResult({ vid, isHomePage }) {
         <div className="videoInfo">
 
 
-          {resultType == 'youtube#video' ? <a href={videoLink}><div className="vidTitle">{vid.snippet.title}</div> </a> :
+          {resultType == 'youtube#video' ? isHomePage ? null : <a href={videoLink}><div className="vidTitle">{vid.snippet.title}</div> </a> :
             <a href={channelLink}><div className="vidTitle">{vid.snippet.title}</div> </a>}
           {resultType == 'youtube#channel' ? <div style={{ fontSize: '.8rem' }} className="description">
             <div style={{ color: 'black' }}>{ConvertToM(subCount)} subscribers</div>
@@ -170,31 +170,47 @@ export default function SearchResult({ vid, isHomePage }) {
 
 
 
-              <div className="videoInfoBox">
-                
-                {isHomePage ? <div className="viewDate">
-                  <div className="view">{ConvertToM(viewCount)} views</div>•
-                  <div className="date">{timeAgo}</div>
-                </div> : resultType == 'youtube#video' ? <div className="viewDate">
-                  <div className="view">{ConvertToM(viewCount)} views</div>•
-                  <div className="date">{timeAgo}</div>
-                </div> : null }
+            {isHomePage ? <div className="videoInfoBox">
+{/*--------------------------------- homepage things start here-----------------------------------------------------*/}
 
-                {
-                isHomePage ? <div className="smallChannelInfo">
+              <img className="videoChannelImg" src={channelPic} alt="" />
+              <div className="channelNameAndInfo">
+              <a href={videoLink}><div className="vidTitle">{vid.snippet.title}</div> </a>
+                <div className="smallChannelInfo">
+                  <a href={channelLink2}>{vid.snippet.channelTitle}</a>
+                </div>
+
+                <div className="viewDate">
+                  <div className="view">{ConvertToM(viewCount)} views</div>•
+                  <div className="date">{timeAgo}</div>
+                </div>
+              </div>
+
+
+
+{/*--------------------------------- searchPage things start here-----------------------------------------------------*/}
+
+              {isHomePage ? null : resultType == 'youtube#video' ? <div className="description"> {vid.snippet.description}</div> : null}
+
+            </div> :
+
+              <div className="videoInfoBox">
+
+                {resultType == 'youtube#video' ? <div className="viewDate">
+                  <div className="view">{ConvertToM(viewCount)} views</div>•
+                  <div className="date">{timeAgo}</div>
+                </div> : null}
+
+                {resultType == 'youtube#video' ? <div className="smallChannelInfo">
                   <img className="videoChannelImg" src={channelPic} alt="" />
                   <a href={channelLink2}>{vid.snippet.channelTitle}</a>
-                </div> : resultType == 'youtube#video' ? <div className="smallChannelInfo">
-                  <img className="videoChannelImg" src={channelPic} alt="" />
-                  <a href={channelLink2}>{vid.snippet.channelTitle}</a>
-                </div> : null
-                }
-                 
+                </div> : null}
+
 
 
                 {isHomePage ? null : resultType == 'youtube#video' ? <div className="description"> {vid.snippet.description}</div> : null}
 
-              </div> 
+              </div>}
 
 
           </div>
@@ -203,6 +219,6 @@ export default function SearchResult({ vid, isHomePage }) {
       </div> : null}
 
     </div>
-    
+
   )
 }

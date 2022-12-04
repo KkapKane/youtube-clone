@@ -9,27 +9,52 @@
     display: flex;
     padding: 6rem;
     gap: 4rem;
-    width: 80%;
+    min-width: 80%;
     flex-wrap: wrap;
     margin-inline: auto;
 
     .homepageVid {
-      display: grid;
-      grid-template-rows: repeat(4, 30%);
-      width: 20%;
+    
+      width: max(300px, 15%)
+    }
+    .vidTitle {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .videoInfoBox {
+      
+      display: flex;
+      gap: 1rem;
+      padding: .5rem;
+      
+      width: 100%;
+      height: 5rem;
+      
+      a{
+        font-size: .8rem;
+        font-weight: 500;
+      }
     }
 
-
-    img { 
-      border-radius: 25px;
+    img {
+      height: 12rem; 
+      border-radius: 12px;
     }
 
    .viewDate {
     display: flex;
+    padding-top: .5rem;
+    font-size: .8rem;
    }
    .channelInfo {
     display: flex;
+    
  
+   }
+   .videoChannelImg {
+   
+    width: 32px;
+    height: 32px;
    }
    .thumbnailDuration {
     display: flex;

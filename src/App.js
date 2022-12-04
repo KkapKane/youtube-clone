@@ -1,6 +1,6 @@
 
 import youtube from "./youtube";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom"
 import SearchPage from "./components/searchPage";
 import HomePage from "./components/homePage";
@@ -13,6 +13,9 @@ function App() {
   const [loading,setLoading] = useState(false)
   const [isHomePage,setHomePage] = useState(true)
   async function onSearch (keyword) {
+
+   
+
 
     const response = await youtube.get("/search", {
     params: {
