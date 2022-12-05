@@ -9,7 +9,7 @@ import {FaLightbulb} from "react-icons/fa"
 import {GiClothesline} from "react-icons/gi"
 import {TbMoodKid} from "react-icons/tb"
 
-export default function SideBar(){
+export default function SideBar({refreshCategory}){
     return (
         <div className='sideBar'>
         
@@ -32,12 +32,12 @@ export default function SideBar(){
              <h4> Explore </h4>
             
                 <div id='sideTab'> <AiFillFire/> Trending</div>
-                <div id='sideTab'><MdMusicNote/> Music</div>
+                <div id='sideTab' onClick={()=>refreshCategory(10)}><MdMusicNote/> Music</div>
                 <div id='sideTab'><MdLocalMovies/> Movie & TV</div>
                 <div id='sideTab'><IoMdWifi/> Live</div>
-                <div id='sideTab'> <SiYoutubegaming/> Gaming</div>
-                <div id='sideTab'> <BiNews/> News</div>
-                <div id='sideTab'> <AiFillTrophy/> Sports</div>
+                <div id='sideTab' onClick={()=>refreshCategory(20)}> <SiYoutubegaming/> Gaming</div>
+                <div id='sideTab' onClick={()=>refreshCategory(25)}> <BiNews/> News</div>
+                <div id='sideTab' onClick={()=>refreshCategory(17)}> <AiFillTrophy/> Sports</div>
                 <div id='sideTab'> <FaLightbulb/> Learning</div>
                 <div id='sideTab'><GiClothesline/> Fashion & Beauty</div>
                 <div id='sideTab'><MdPodcasts/> Podcasts</div>

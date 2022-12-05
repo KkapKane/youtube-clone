@@ -38,7 +38,7 @@ function App() {
 
 
 const handleScroll = () => {
-    if(window.innerHeight + document.documentElement.scrollTop + 1 >= document.scrollingElement.scrollHeight){
+    if(window.innerHeight + document.documentElement.scrollTop  === document.scrollingElement.scrollHeight){
         setPage((prev) => prev +  1)
       
     }
@@ -50,8 +50,6 @@ useEffect(()=>{
 },[])
 
 async function refreshCategory(category) {
-  setLoading(true)
-  try {
   const response = await youtube.get("/videos", {
     params: {
       chart: "mostPopular",
@@ -62,18 +60,15 @@ async function refreshCategory(category) {
   })
   setCurrentCategory(category)
   setPopularVid(response.data.items)
-  
-  }
-  catch(error) { 
-    console.log(error)
-  }
-  setLoading(false)
+   
+  setLoading(true)
+  .catch((error) => console.log(error))
+  .finally(() => setLoading(false))
 }
 
 
 async function getMostPopular(category){
-  setLoading(true)
-  try {
+
     const result = await youtube.get("/videos", {
         params:{
             chart: "mostPopular",
@@ -87,17 +82,11 @@ async function getMostPopular(category){
     setPopularVid((prev) => [...prev, ...result.data.items])
 
     
-  }
-  catch(error) {
-   
-    console.log(error)
-}
-setLoading(false)
+    setLoading(true)
+    .catch((error) => console.log(error))
+    .finally(() => setLoading(false))
 }
 
-function changeCategory (category) {
-  setCurrentCategory(category)
-}
 
 
   return (
@@ -107,7 +96,7 @@ function changeCategory (category) {
     
     <TopBar onSearch={onSearch}/>
     <CategoryBar getMostPopular={getMostPopular} refreshCategory={refreshCategory}/>
-    <SideBar />
+    <SideBar refreshCategory={refreshCategory}/>
     <Routes>
     <Route path="/" element={ <HomePage 
     isHomePage={isHomePage} 
