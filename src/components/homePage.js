@@ -3,52 +3,22 @@ import youtube from "../youtube"
 import "../style/homepage.scss"
 import SearchResult from "./searchResult"
 
-export default function HomePage({isHomePage, setHomePage}) {
+export default function HomePage({isHomePage, setHomePage, page, loading, getMostPopular, PopularVid, currentCategory, setPopularVid}) {
 
-    const [PopularVid,setPopularVid] = useState([])
-    const [loading,setLoading] = useState(false)
-    const [NPT,setNPT] = useState()
-    const [page,setPage] = useState(1)
-    const [category,setCategory] = useState(0)
-    const handleScroll = () => {
-        if(window.innerHeight + document.documentElement.scrollTop  === document.scrollingElement.scrollHeight){
-            setPage((prev) => prev +  1)
-           console.log('work')
-        }
-        
-    }
-    useEffect(()=>{
-        window.addEventListener("scroll", handleScroll);
-       
-    },[])
+ 
+
+
+
 
    
 useEffect(()=> {
 
-    getMostPopular()
+    getMostPopular(currentCategory)
     setHomePage(true)
-    
+   
     }, [page])
-    
-    async function getMostPopular(){
 
-        const result = await youtube.get("/videos", {
-            params:{
-                chart: "mostPopular",
-                maxResults: 16,
-                pageToken: NPT,
-                videoCategoryId: category,
-            }
-        })
-        console.log(result)
-        setNPT(result.data.nextPageToken)
-        setPopularVid((prev) => [...prev, ...result.data.items])
-      
-        setLoading(true)
-        .catch((error) => console.log(error))
-        .finally(() => setLoading(false))
-    }
- 
+    
 
 
 
@@ -57,7 +27,7 @@ useEffect(()=> {
         {!loading ? <div>...loading</div> : <div className="HomePageContent">
             {PopularVid.map((x)=> {
                 return (
-                    <div className="homepageVid"> 
+                    <div className="homepageVid" key={x.id}> 
                     <SearchResult vid={x} isHomePage={isHomePage}/>
                     </div>
                 )
