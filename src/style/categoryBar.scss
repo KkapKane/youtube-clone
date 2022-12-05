@@ -1,0 +1,26 @@
+
+.categoryBar {
+    display: flex;
+    gap: 1rem;
+    background-color: white;
+    height: 55px;
+    width: 80%;
+    margin-top: 3.5rem;
+    margin-left: 10.5rem;
+    position: fixed;
+    top: 0px;
+    z-index: 98;
+    align-items: center;
+    justify-content: center;
+    .category {
+        display: flex;
+        align-items: center;
+        
+        font-size: 1rem;
+        padding: .7rem;
+        border-radius: 10px;
+        margin: 12px,12px,12px, 0;
+        background-color: rgb(233, 229, 229);
+        cursor: pointer;
+    }
+}

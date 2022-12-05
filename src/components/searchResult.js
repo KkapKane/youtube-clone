@@ -86,7 +86,6 @@ export default function SearchResult({ vid, isHomePage }) {
           maxResults: 1,
         }
       })
-
       setViewCount(response.data.items[0].statistics.viewCount)
       const response2 = await youtube.get("/videos", {
         params: {
@@ -94,15 +93,10 @@ export default function SearchResult({ vid, isHomePage }) {
           id: id,
           maxResults: 1
         }
-      })
-      console.log(response2)
+      })   
       const d = moment.duration(response2.data.items[0].contentDetails.duration)
-
       setDuration({ ...duration, seconds: d._data.seconds, minutes: d._data.minutes, hours: d._data.hours })
-
-
       setLoading(false)
-
     }
     catch (error) {
       console.error('error:' + error)
@@ -114,7 +108,7 @@ export default function SearchResult({ vid, isHomePage }) {
   useEffect(() => {
 
 
-    console.log(vid)
+    
     if (resultType == 'youtube#video') {
 
       ChannelImg(vid.snippet.channelId)

@@ -9,7 +9,7 @@ export default function HomePage({isHomePage, setHomePage}) {
     const [loading,setLoading] = useState(false)
     const [NPT,setNPT] = useState()
     const [page,setPage] = useState(1)
-
+    const [category,setCategory] = useState(0)
     const handleScroll = () => {
         if(window.innerHeight + document.documentElement.scrollTop  === document.scrollingElement.scrollHeight){
             setPage((prev) => prev +  1)
@@ -36,7 +36,8 @@ useEffect(()=> {
             params:{
                 chart: "mostPopular",
                 maxResults: 16,
-                pageToken: NPT
+                pageToken: NPT,
+                videoCategoryId: category,
             }
         })
         console.log(result)

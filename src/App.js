@@ -6,6 +6,7 @@ import SearchPage from "./components/searchPage";
 import HomePage from "./components/homePage";
 import SideBar from "./components/sideBar";
 import TopBar from "./components/topbar";
+import CategoryBar from "./components/categoryBar";
 
 function App() {
 
@@ -14,9 +15,6 @@ function App() {
   const [isHomePage,setHomePage] = useState(true)
 
   async function onSearch (keyword) {
-
-   
-
 
     const response = await youtube.get("/search", {
     params: {
@@ -40,6 +38,7 @@ function App() {
 
     
     <TopBar onSearch={onSearch}/>
+    <CategoryBar />
     <SideBar />
     <Routes>
     <Route path="/" element={ <HomePage isHomePage={isHomePage} setHomePage={setHomePage}/>} />
