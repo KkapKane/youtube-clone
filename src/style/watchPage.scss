@@ -4,6 +4,10 @@
     height: 100%;
     background-color: red;
 
+    a {
+    cursor: pointer;
+    }
+
     img {
         height: 2.4rem;
         border-radius: 100vw;
@@ -35,7 +39,7 @@
         border-radius: 25px;
         
         --max-lines: 3;
-        --line-height: 1.2;
+        --line-height: 1.8;
         max-height: calc(var(--max-lines) * 1em * var(--line-height));
         line-height: var(--line-height);
         overflow: hidden;
@@ -59,17 +63,97 @@
         }
     }
 
-    .channelNameSubCount{
-        font-size: .8em;
+    .channelContainerAndYoutubeOptions{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .youtubeOptions {
+           
+            gap: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .thumbs {
+                height: 1em;
+                width: 8rem;
+                
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap:.1em;
+
+                .thumbsUp {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    background-color: rgb(187, 184, 184);
+                    width: 4em;
+                    height: 1em;
+                    padding: .5em;
+                    border-radius: 50px 0px 0px 50px;
+                        cursor: pointer;
+                }
+                .thumbsDown{
+                    display: flex;
+                    padding: .5em;
+                    align-self: center;
+                    height: 1em;
+                    background-color: rgb(187, 184, 184);
+                    border-radius: 0px 50px 50px 0px;
+                    cursor: pointer;
+                }
+                
+                
+            }
+            .share {
+                display: flex;
+                align-items: center;
+                border-radius: 100vw;
+                height: 1em;
+                width: 4em;
+                
+                background-color: rgb(187, 184, 184);
+                padding: .6em;
+                    cursor: pointer;
+                
+            }
+            .save {
+                display: flex;
+                align-items: center;
+                height: 1em;
+                border-radius: 100vw;
+                background-color: rgb(187, 184, 184);
+                padding: .6em;
+                    cursor: pointer;
+            }
+
+            .threeDot {
+                height: 1em;
+                border-radius: 100vw;
+                background-color: rgb(187, 184, 184);
+                padding: .5em;
+                cursor: pointer;
+            }
+        }
     }
-
-.subscribeBtn {
-    color: white;
-    background-color: #333;
-    padding: .6em;
-    border-radius: 25px;
-}
-
+    
+    
+    .channelInfo{
+        padding: 1em;
+        .channelNameSubCount{
+            font-size: .8em;
+        }
+        .subscribeBtn {
+            color: white;
+            background-color: #333;
+            padding: .6em;
+            border-radius: 25px;
+            
+            cursor: pointer;
+        }
+    }
+  
 }
 
 .descriptionBox::before {
@@ -107,6 +191,7 @@
 }
 
 pre {
+    font-family: 'Roboto';
     white-space: pre-wrap;       /* css-3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
