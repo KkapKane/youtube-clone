@@ -2,19 +2,24 @@
 import React, { useState, useEffect } from "react"
 import youtube from "../youtube";
 import ConvertToM from "../functions/kFormatter";
+
 const td = require("tinyduration")
 var moment = require('moment'); // require
 
 
-export default function SearchResult({ vid, isHomePage }) {
-
+export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
+  //channel link when it's type is channel
   const channelLink = isHomePage ? 'https://youtube.com/channel/' + vid.snippet.channelId : 'https://youtube.com/channel/' + vid.id.channelId;
+  //channel link when it's type is video
   const channelLink2 = isHomePage ? 'https://youtube.com/channel/' + vid.snippet.channelId : 'https://youtube.com/channel/' + vid.snippet.channelId;
   const videoLink = isHomePage ? 'https://youtube.com/watch?v=' + vid.id : 'https://youtube.com/watch?v=' + vid.id.videoId;
   const videoId = isHomePage ? vid.id : vid.id.videoId;
   const resultType = isHomePage ? vid.kind : vid.id.kind
   const imgSrc = vid.snippet.thumbnails.medium.url;
   const timeAgo = moment(vid.snippet.publishedAt).fromNow();
+
+
+ 
 
 
 
@@ -116,6 +121,7 @@ export default function SearchResult({ vid, isHomePage }) {
 
 
       grabVidInfo(videoId)
+    
 
 
     }
@@ -140,10 +146,10 @@ export default function SearchResult({ vid, isHomePage }) {
       {!loading ? <div className="test">
         {resultType == 'youtube#channel' ? <a href={channelLink}> <img className="channelImg" src={imgSrc} alt="" /> </a> :
 
-          <div className="thumbnailDuration"><a href={videoLink}>
+          <div className="thumbnailDuration"><div onClick={()=>NavToWatchPage(vid)}>
             <img className="videoImg" src={imgSrc} alt="" />
             {duration.seconds > 10 ? <div className="duration">{duration.minutes}:{duration.seconds} </div> : <div className="duration">{duration.minutes}:0{duration.seconds} </div>}
-          </a>
+          </div>
           </div>
 
         }

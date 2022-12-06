@@ -1,5 +1,6 @@
 #root {
     width: 100vw;
+    
 }
 .topBar {
     display: grid;
@@ -21,6 +22,8 @@
         width: 100%;
         justify-content: center;
         align-items: center;
+
+     
         
         #video-Search {
             display: flex;
@@ -57,6 +60,7 @@
         padding-left: 2rem;
         gap: 1rem;
         align-items: center;
+        cursor: pointer;
     }
     .hamburger {
         color: black;
@@ -72,3 +76,4 @@
         cursor: pointer;
     }
 }
+

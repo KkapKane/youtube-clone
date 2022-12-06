@@ -1,0 +1,115 @@
+.watchPage {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: red;
+
+    img {
+        height: 2.4rem;
+        border-radius: 100vw;
+    }
+
+    .videoContainer {
+        position: absolute;
+        padding: 4rem;
+        margin: 2.5rem;
+        width: 60%;
+        height: 60%;
+        left: 0;
+    iframe {
+        width: 100%;
+        height: 100%;
+    }    
+       
+    }
+    .Title {
+      
+        font-size: 1.3rem;
+    }
+
+    .descriptionBox {
+       
+        font-size: .8rem;
+        padding: 1rem;
+        background-color: rgb(223, 222, 222);
+        border-radius: 25px;
+        
+        --max-lines: 3;
+        --line-height: 1.2;
+        max-height: calc(var(--max-lines) * 1em * var(--line-height));
+        line-height: var(--line-height);
+        overflow: hidden;
+        position: relative;
+            
+           
+
+        .description{
+            width: 100%;
+       
+           
+           
+            
+            
+        }
+    
+
+        .viewDate {
+            display: flex;
+            gap: .5rem;
+        }
+    }
+
+    .channelNameSubCount{
+        font-size: .8em;
+    }
+
+.subscribeBtn {
+    color: white;
+    background-color: #333;
+    padding: .6em;
+    border-radius: 25px;
+}
+
+}
+
+.descriptionBox::before {
+    content: "";
+    position: absolute;
+    height: calc(1em * var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.expand-btn {
+    position: absolute;
+    
+    appearance: none;
+    border: 1px solid black;
+    padding: .5em;
+    border-radius: .25em;
+    cursor: pointer
+    
+    
+
+}
+
+.expand-btn::before {
+    content: "show more"
+}
+
+.expand-btn:checked::before {
+    content: "show less";
+}
+
+.descriptionBox:has(+ .expand-btn:checked){
+    max-height: none;
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+   }

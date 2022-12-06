@@ -9,9 +9,12 @@ import {FaLightbulb} from "react-icons/fa"
 import {GiClothesline} from "react-icons/gi"
 import {TbMoodKid} from "react-icons/tb"
 
-export default function SideBar({refreshCategory}){
+export default function SideBar({refreshCategory, isSideBar}){
+
+
+
     return (
-        <div className='sideBar'>
+        <div className={isSideBar ? "sideBar" : "HideSideBar" }>
         
             <div className='home'>
                 <div id='sideTab'>

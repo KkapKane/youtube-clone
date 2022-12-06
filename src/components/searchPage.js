@@ -3,7 +3,7 @@ import '../style/searchPage.scss'
 
 import React, {useState, useEffect} from "react";
 
-export default function SearchPage({loading, videoData, isHomePage, setHomePage}) { 
+export default function SearchPage({loading, videoData, isHomePage, setHomePage, NavToWatchPage}) { 
 
     
 
@@ -19,7 +19,7 @@ export default function SearchPage({loading, videoData, isHomePage, setHomePage}
             
             return (
                 
-           <SearchResult vid={vid} key={vid.id.videoId} isHomePage={isHomePage} setHomePage={setHomePage}/>
+           <SearchResult vid={vid} key={vid.id.videoId} isHomePage={isHomePage} setHomePage={setHomePage} NavToWatchPage={NavToWatchPage}/>
             
            
            )

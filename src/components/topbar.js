@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {SiYoutube} from 'react-icons/si'
 
-export default function TopBar({onSearch}) {
+export default function TopBar({onSearch, handleToggle}) {
+    
     const navigate = useNavigate();
 
     return (
         <div className="topBar">
             <div className="hamburgerLogo">
-            <GiHamburgerMenu size={25} className="hamburger"/>
+            <GiHamburgerMenu size={25} className="hamburger" onClick={()=> handleToggle()}/>
             <div onClick={()=>navigate('/')} className="youtubeLogo">
             <SiYoutube size={30} color='red'/> <div style={{fontSize: '1rem'}}>YouTube</div>
             </div>

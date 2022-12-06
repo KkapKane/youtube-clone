@@ -3,9 +3,8 @@
     flex-direction: column;
 
     height: 90vh;
-    width: 10%;
+    width: max(10%,10rem);
     
-    position: absolute;
     color: black;
     
     overflow: hidden;
@@ -17,12 +16,14 @@
     top: 50px;
     gap: 12px;
     padding: 20px;
+    
+    transition: transform 1000ms;
 
     &:hover {
         overflow-y: auto;
         
     }
-
+}
     #sideTab {
         display: flex;
         flex-direction: row;
@@ -35,6 +36,11 @@
         width: 100%;
         align-items: center;
         cursor: pointer;
+        border-radius: 100vw;
+        &:hover {
+            background-color: rgb(224, 219, 219);
+
+        }
      
     }
     
@@ -87,23 +93,76 @@
     }
 
   
-}
+
 
 .sideBar::-webkit-scrollbar {
-    width: 4px;
+    width: 10px;
 }
 
 .sideBar::-webkit-scrollbar-track {
     background-color: rgb(203, 193, 193);
-    width: 1em;
+    width: 1.5em;
     margin-block: 2rem;
     
 }
 
 .sideBar::-webkit-scrollbar-thumb {
-    background-color: rgb(21, 19, 19);
+    background-color: rgb(147, 143, 143);
     border-radius: 100vw;
-    width: 1em;
+    width: 1.5em;
     
+    
+}
+
+
+.HideSideBar {
+    display: flex;
+    flex-direction: column;
+
+    height: 90vh;
+    width: 10%;
+    
+    color: black;
+    
+    overflow: hidden;
+
+    flex: 1;
+    flex-basis: 1e-9px;
+    left: 0;
+    position: fixed;
+    top: 50px;
+    gap: 12px;
+    padding: 20px;
+    
+    transition: transform 1000ms;
+    transform: translateX(-100%);
+    transition: 1000ms;
+}
+
+@media(max-width: 800px){
+    .sideBar {
+        display: flex;
+        flex-direction: column;
+    
+        height: 90vh;
+        width: 10%;
+        
+        color: black;
+        
+        overflow: hidden;
+    
+        flex: 1;
+        flex-basis: 1e-9px;
+        left: 0;
+        position: fixed;
+        top: 50px;
+        gap: 12px;
+        padding: 20px;
+        
+       
+        transform: translateX(-100%);
+       
+    }
+
     
 }
