@@ -15,6 +15,8 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
     const [subCount, setSubCount] = useState()
     const [viewCount, setViewCount] = useState()
     const [likeCount,setLikeCount] = useState()
+    const [relatedVid,setRelatedVid] = useState({})
+    const [loading, setLoading] = useState(false)
     const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
     const [duration, setDuration] = useState({
         hours: 0,
@@ -22,6 +24,26 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
         seconds: 0
       })
     
+      async function findRelatedVid(id){
+    
+         
+          const response = await youtube.get("/search", {
+            params: {
+              id: id,
+              maxResults: 16,
+              relatedToVideoId: id,
+            }
+          })
+          setRelatedVid(response.data.items)
+    
+          setLoading(true)
+          .catch((error) => console.log(error))
+          .finally(() => setLoading(false))
+      
+        }
+      
+        
+      
 
     async function ChannelImg(id) {
         try {
@@ -77,7 +99,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
           console.error('error:' + error)
         }
       }
-
+// checks if url exist in string and wraps it around <a> if so
       const renderText = txt =>
   txt
     .split(" ")
@@ -85,25 +107,28 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
       URL_REGEX.test(part) ? <a style={{color:'blue'}} href={part}>{part} </a> : part + " "
     );
 
+
+
 useEffect(() => {
 setHomePage(false)
 setIsSideBar(false)
 ChannelImg(selectedVid.vid.snippet.channelId)
 ChannelSub(selectedVid.vid.snippet.channelId)
 grabVidInfo(selectedVid.vid.id)
+findRelatedVid(selectedVid.id)
 console.log(selectedVid)
 },[])
    
     return (
         <div className="watchPage">
             <div className="videoContainer">
-            <iframe width={560*2} height={315*2} src={`https://www.youtube.com/embed/${selectedVid.vid.id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            <iframe className="vid" src={`https://www.youtube.com/embed/${selectedVid.vid.id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
             </iframe>
             <div className="Title">{selectedVid.vid.snippet.title}</div>
             <div className="channelContainerAndYoutubeOptions">
             <div className="channelInfo">
-            <img src={channelPic} alt="" />
+            <img className="channelLogo" src={channelPic} alt="" />
             <div className="channelNameSubCount">
             <div>{selectedVid.vid.snippet.channelTitle}</div>
             <div>{ConvertToM(subCount)} subscribers</div>
@@ -134,6 +159,18 @@ console.log(selectedVid)
                     
             </div>
                     <input className="expand-btn" type="checkbox" />
+            </div>
+            <div className="relatedVidContainer">
+            {loading ? relatedVid.map((z)=>{
+            
+            return (
+                <div className="relatedVid">
+           <SearchResult vid={z} />
+           </div>
+            
+           
+           )
+          }) : null}
             </div>
         </div>
 
