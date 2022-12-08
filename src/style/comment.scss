@@ -1,0 +1,30 @@
+.Comment {
+    display: flex;
+    width: 100%;
+   
+    overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+            
+    img {
+        border-radius: 100vw;
+        height: 2.5em;
+    }
+    .commentHeader{
+        display: flex;
+        gap: 1rem;
+        font-size: .8em;
+    }
+    .commentInteractContainer {
+        display: flex;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .Comment  {
+        zoom: .8;
+    }
+}

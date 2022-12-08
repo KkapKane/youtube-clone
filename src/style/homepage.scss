@@ -82,10 +82,10 @@
   }
 }
 
-@media(max-width: 800px){
+@media(max-width: 900px){
   .HomePage{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     padding: 0px;
     justify-content: center;
     

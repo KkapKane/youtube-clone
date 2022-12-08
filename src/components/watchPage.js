@@ -2,11 +2,14 @@ import React, {useEffect, useState} from "react"
 import "../style/watchPage.scss"
 import SearchResult from "./searchResult"
 import youtube from "../youtube"
+import Comment from "./comment"
+
 import ConvertToM from "../functions/kFormatter";
 import {FaRegThumbsUp} from 'react-icons/fa'
 import {FaRegThumbsDown} from 'react-icons/fa'
 import {RiShareForwardLine} from 'react-icons/ri'
 import {BiListPlus,BiDotsHorizontalRounded} from 'react-icons/bi'
+import axios from "axios";
 
 var moment = require('moment'); // require
 export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
@@ -15,6 +18,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
     const [subCount, setSubCount] = useState()
     const [viewCount, setViewCount] = useState()
     const [likeCount,setLikeCount] = useState()
+    const [comments, setComments] = useState()
     const [relatedVid,setRelatedVid] = useState({})
     const [loading, setLoading] = useState(false)
     const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
@@ -42,6 +46,26 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
       
         }
       
+        async function getComments(id){
+    
+        try {
+          // const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAtyd7zyv1IQJM1re_Zrx698rT5bcVu7fg&textFormat=plainText&part=snippet&videoId=${id}&maxResults=5`)
+          const response = await youtube.get("/commentThreads", {
+            params: {
+              videoId: id,
+              maxResults: 5,
+              textFormat: 'plainText'
+            }
+          })
+          console.log(response)
+          setComments(response.data.items)
+          console.log('loading')
+        }catch(error){
+          console.log(error)
+        }
+      
+      
+        }
         
       
 
@@ -107,6 +131,9 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
       URL_REGEX.test(part) ? <a style={{color:'blue'}} href={part}>{part} </a> : part + " "
     );
 
+   
+
+
 
 
 useEffect(() => {
@@ -117,6 +144,8 @@ ChannelSub(selectedVid.vid.snippet.channelId)
 grabVidInfo(selectedVid.vid.id)
 findRelatedVid(selectedVid.id)
 console.log(selectedVid)
+getComments(selectedVid.vid.id)
+
 },[])
    
     return (
@@ -155,23 +184,32 @@ console.log(selectedVid)
                     <pre className="description">{renderText(selectedVid.vid.snippet.description)}
                     
                     </pre>
-                    {console.log(selectedVid.vid.snippet.description[0])}
+                   
                     
             </div>
                     <input className="expand-btn" type="checkbox" />
+                    <div className="commentSection">
+                    {loading ? comments.map((comment)=>{
+              return (
+                <Comment comment={comment}/>
+                
+              )
+            }) :null}
+            </div>
             </div>
             <div className="relatedVidContainer">
             {loading ? relatedVid.map((z)=>{
             
             return (
-                <div className="relatedVid">
+              
            <SearchResult vid={z} />
-           </div>
+          
             
            
            )
           }) : null}
             </div>
+            
         </div>
 
     )

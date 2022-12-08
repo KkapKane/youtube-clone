@@ -146,10 +146,10 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
       {!loading ? <div className="test">
         {resultType == 'youtube#channel' ? <a href={channelLink}> <img className="channelImg" src={imgSrc} alt="" /> </a> :
 
-          <div className="thumbnailDuration"><div onClick={()=>NavToWatchPage(vid)}>
-            <img className="videoImg" src={imgSrc} alt="" />
+          <div className="thumbnailDuration"> 
+            <img onClick={()=>NavToWatchPage(vid)} className="videoImg" src={imgSrc} alt="" />
             {duration.seconds > 10 ? <div className="duration">{duration.minutes}:{duration.seconds} </div> : <div className="duration">{duration.minutes}:0{duration.seconds} </div>}
-          </div>
+          
           </div>
 
         }
