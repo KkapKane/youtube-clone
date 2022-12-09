@@ -18,6 +18,7 @@
         display: flex;
         flex-direction: column;
         padding-top: 4rem;
+        padding-left: 2%;
         margin-left: auto;
    
         
@@ -161,8 +162,8 @@
 }
 
 .expand-btn {
-    position: absolute;
-    bottom: -60px;
+  
+    bottom: 15%;
     right: 50%;
     appearance: none;
     border: 1px solid black;
@@ -197,21 +198,23 @@ pre {
 
    .relatedVidContainer {
     display: flex;
-    
+    zoom: .8;
     flex-direction: column;
-    padding-top: 4rem;
+    padding-top: 5rem;
     margin-right: auto;
     gap: 1rem;
    
     .test {
         display: flex;
         height: 8em;
+        width: 100%;
+
         
 
         .videoInfo {
             display: flex;
             flex-direction: column;
-            
+            max-width: 40%;
             padding-left: 1em;
             padding-top: 4px;
             
@@ -227,6 +230,9 @@ pre {
             -webkit-line-clamp: 2; /* number of lines to show */
            line-clamp: 2; 
             -webkit-box-orient: vertical;
+            font-size: 1.2rem;
+            font-weight: 500;
+            
             }
         }
         .thumbnailDuration{
@@ -245,6 +251,7 @@ pre {
         }
         .videoImg {
             max-height: 100%;
+            width: 100%;
             border-radius: 15px;
         }
         .videoInfoBox{
@@ -285,6 +292,8 @@ pre {
    }
 
 
+ 
+
 @media screen and (max-width: 900px){
   .watchPage {
     max-width: 100%;
@@ -296,6 +305,7 @@ pre {
   
     margin: 0;
     padding-top: 0 !important;
+    padding-left: 0 !important;
     width: 100%;
     margin-left: 0 !important;
     
@@ -345,10 +355,10 @@ iframe {
     }
 }
 
-.test {
-    flex-direction: column;
-    height: 10rem;
+
+.searchResult{
     width: 100%;
+}
 
     .vidTitle {
         overflow: hidden;
@@ -361,18 +371,29 @@ iframe {
         max-width: 100%;
         }
     
-}
+
 .videoImg {
     border-radius: 0 !important;
-    max-height: 100%;
     width: 100%;
+    
 }
 
 .relatedVidContainer {
+    display: flex;
+    
+    align-items: center;
     width: 100%;
-    gap: 12rem;
+    gap: 16rem;
     margin: 0;
     padding: 0;
+
+    .test {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    
 }
 .relatedVid{
     max-width: 100%;
@@ -415,7 +436,9 @@ iframe {
 .videoInfo{
     margin: 0 !important;
     padding: 0 !important;
-    max-width: 100%;
+    max-width: 100% !important;
+    
+    
 }
 
 
@@ -427,7 +450,7 @@ iframe {
 .expand-btn {
     color: white;
     position: absolute;
-    bottom: 38%;
+    bottom: 40%;
     right: 10%;
     appearance: none;
     border: 1px solid rgb(243, 243, 243);
@@ -444,15 +467,16 @@ iframe {
     gap: 1rem;
 }
 
+
+
 .commentSection {
     padding: 2rem;
     height: 100%;
+
     display: flex;
     flex-wrap: wrap;
     
 }
-
-
 } 
 
 

@@ -83,19 +83,21 @@
         display: flex;
         color: white;
         background-color: rgba($color: #000000, $alpha: .9);
-        justify-content: space-between;
+        
         align-items: center;
     }
     #video-Search {
         display: none !important;
+        height: 50%;
     }
 
-    .searchIcon {
-        align-self: end;
-        justify-self: end;
-    }
     
-    .Search {
+    form {
         justify-content: end;
+    }
+ 
+
+    .hamburger {
+        display: none;
     }
 }

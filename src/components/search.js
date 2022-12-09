@@ -30,7 +30,7 @@ const onSubmit = event => {
         <form onSubmit={onSubmit}>
         <input onChange={onSearchChange} id="video-Search" type="text" placeholder="Search"/>
         <div onClick={onSubmit} className="searchIcon">
-        <AiOutlineSearch/>
+        <AiOutlineSearch />
         </div>
         </form>
         

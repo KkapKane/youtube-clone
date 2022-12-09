@@ -4,20 +4,24 @@
   
     padding-left: 15rem;
     padding-top: 3rem;
-  
+    height:  100%;
 
   .HomePageContent {
     display: flex;
 
     padding: 6rem;
-    
-    gap: 4rem;
+    justify-content: center;
+    gap: 2rem;
     flex-wrap: wrap;
     margin-inline: auto;
 
     .homepageVid {
     
-      width: max(300px, 15%)
+      width: max(300px, 15%);
+
+      .searchResult{
+        width: 100%;
+      }
     }
     .vidTitle {
       font-size: 1rem;
@@ -45,7 +49,8 @@
     }
 
     img {
-      height: 12rem; 
+      height: 12rem;
+      width: 100%; 
       border-radius: 12px;
     }
 
@@ -72,7 +77,7 @@
    .duration {
     position: absolute;
         bottom: 6%;
-        left: 100%;
+        left: 80%;
         font-size: .8rem;
         width: 35px;
         color: white;
@@ -82,12 +87,34 @@
   }
 }
 
+.test {
+  
+  max-width: 100%;
+}
+
+
 @media(max-width: 900px){
-  .HomePage{
+
+  .HomePage {
     display: flex;
-    flex-wrap: wrap;
-    padding: 0px;
-    justify-content: center;
+    padding: 0 !important;
+    max-height: 100%;
     
   }
+  .HomePageContent{
+    justify-content: center;
+    
+    max-width: 100%;
+    max-height: 100%; 
+    padding: 0 !important;
+    margin-top: 20%;
+    gap: 1rem !important;
+    
+  }
+
+ 
+  
+  
+
+
 }
