@@ -1,5 +1,5 @@
 
-import youtube from "./youtube";
+// import youtube from "./youtube";
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom"
 import SearchPage from "./components/searchPage";
@@ -9,6 +9,10 @@ import TopBar from "./components/topbar";
 import CategoryBar from "./components/categoryBar";
 import WatchPage from "./components/watchPage";
 import { useNavigate } from 'react-router-dom';
+import api from "./youtube";
+import axios from "axios";
+import { MdSnippetFolder } from "react-icons/md";
+import Settings from "./components/settings";
 
 function App() {
 
@@ -22,7 +26,31 @@ function App() {
   const [page, setPage] = useState(1)
   const [isSideBar, setIsSideBar] = useState(true)
   const [selectedVid, setSelectedVid] = useState({})
-  
+  const [apiKey,setApiKey] = useState();
+  const [dbId,setDbId] = useState();
+  const [isSetting, setIsSetting] = useState(false);
+
+async function updateApi(id,newKey) {
+ const response = await axios.patch(`http://localhost:8080/posts/${id}`, {
+  key: newKey
+ })
+
+}
+
+    useEffect(()=>{
+      function handleKeyDown(e){
+       
+        if(e.keyCode === 119){
+          setIsSetting(prevSet=> !prevSet)
+        
+        }
+      }
+      document.addEventListener('keydown', handleKeyDown);
+      return function cleanup(){
+        document.removeEventListener('keydown', handleKeyDown);
+      }
+    }, []);
+
   const handleToggle = () => {
     setIsSideBar(!isSideBar)
   }
@@ -36,18 +64,18 @@ function App() {
   
   async function onSearch(keyword) {
 
-    const response = await youtube.get("/search", {
+    setLoading(true)
+    const response = await api.get("/search", {
       params: {
-        q: keyword
+        key: apiKey,
+        q: keyword,
       }
     })
 
     setVideoData(response.data.items)
-    setLoading(true)
     
-
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
+    setLoading(false)
+      
   }
 
 
@@ -60,7 +88,21 @@ function App() {
     }
 
   }
+  async function getApi(){
+    
+    const response = await axios.get('http://localhost:8080/posts')
+    setApiKey(response.data[0].key)
+  
+    setDbId(response.data[0]._id)
+   
+
+    setLoading(false)
+   
+  }
+
+
   useEffect(() => {
+    getApi()
     window.addEventListener("scroll", handleScroll);
 
   }, [])
@@ -68,41 +110,45 @@ function App() {
   //--Refresh the home page with the new category selected from category Bar
 
   async function refreshCategory(category) {
-    const response = await youtube.get("/videos", {
+  
+    const response = await api.get("/videos", {
       params: {
+        
+        key: apiKey,
         chart: "mostPopular",
         maxResults: 16,
-
         videoCategoryId: category,
       }
     })
     setCurrentCategory(category)
     setPopularVid(response.data.items)
 
-    setLoading(true)
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
+   
+      
   }
 
   // grabs the most popular video in the default category of 0/ALL
   async function getMostPopular(category) {
-
-    const result = await youtube.get("/videos", {
+    
+    const datkey = await axios.get('http://localhost:8080/posts')
+   
+    const result = await api.get("/videos", {
       params: {
+        
+        key: datkey.data[0].key,
         chart: "mostPopular",
         maxResults: 16,
         pageToken: NPT,
         videoCategoryId: category,
       }
     })
-    console.log(result)
+    
     setNPT(result.data.nextPageToken)
     setPopularVid((prev) => [...prev, ...result.data.items])
-
-
-    setLoading(true)
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
+    
+    setLoading(false)
+    
+ 
   }
 
   
@@ -111,9 +157,9 @@ function App() {
     <div className="App">
 
 
-
+      <Settings isSetting={isSetting} dbId={dbId} updateApi={updateApi} setIsSetting={setIsSetting}/>
       <TopBar onSearch={onSearch} handleToggle={handleToggle} />
-      {isHomePage ? <CategoryBar getMostPopular={getMostPopular} refreshCategory={refreshCategory} /> : null}
+      {isHomePage ? <CategoryBar  refreshCategory={refreshCategory} /> : null}
       <SideBar refreshCategory={refreshCategory} isSideBar={isSideBar} />
       <Routes>
         <Route path="/" element={<HomePage
@@ -122,14 +168,17 @@ function App() {
           setIsSideBar={setIsSideBar}
           currentCategory={currentCategory}
           setPopularVid={setPopularVid}
+          getApi={getApi}
           getMostPopular={getMostPopular}
           NavToWatchPage={NavToWatchPage}
           PopularVid={PopularVid}
           page={page}
+          apiKey={apiKey}
           loading={loading} />} />
 
         <Route path="/searchPage" element={<SearchPage
           videoData={videoData}
+          apiKey={apiKey}
           loading={loading}
           isHomePage={isHomePage}
           setHomePage={setHomePage}
@@ -138,6 +187,7 @@ function App() {
 
         <Route path="/watchPage" element={<WatchPage
           setIsSideBar={setIsSideBar}
+          apiKey={apiKey}
           setHomePage={setHomePage}
           selectedVid={selectedVid} />} />
       </Routes>

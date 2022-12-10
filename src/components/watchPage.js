@@ -12,7 +12,7 @@ import {BiListPlus,BiDotsHorizontalRounded} from 'react-icons/bi'
 import axios from "axios";
 
 var moment = require('moment'); // require
-export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
+export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey}) {
     const timeAgo = moment(selectedVid.vid.snippet.publishedAt).fromNow();
     const [channelPic, setChannelPic] = useState()
     const [subCount, setSubCount] = useState()
@@ -33,6 +33,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
          
           const response = await youtube.get("/search", {
             params: {
+              key: apiKey,
               id: id,
               maxResults: 16,
               relatedToVideoId: id,
@@ -52,6 +53,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
           // const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAtyd7zyv1IQJM1re_Zrx698rT5bcVu7fg&textFormat=plainText&part=snippet&videoId=${id}&maxResults=5`)
           const response = await youtube.get("/commentThreads", {
             params: {
+              key: apiKey,
               videoId: id,
               maxResults: 5,
               textFormat: 'plainText'
@@ -73,6 +75,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
         try {
           const response = await youtube.get("/channels", {
             params: {
+              key: apiKey,
               id: id,
               maxResults: 1,
             }
@@ -87,6 +90,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
         try {
            const response = await youtube.get("/channels", {
             params: {
+              key: apiKey,
               part: 'statistics',
               id: id,
               maxResults: 1,
@@ -102,6 +106,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
         try {
            const response = await youtube.get("/videos", {
             params: {
+              key:apiKey,
               part: 'statistics',
               id: id,
               maxResults: 1,
@@ -111,6 +116,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar}) {
           setViewCount(response.data.items[0].statistics.viewCount)
           const response2 = await youtube.get("/videos", {
             params: {
+              key: apiKey,
               part: 'contentDetails',
               id: id,
               maxResults: 1
@@ -202,7 +208,7 @@ getComments(selectedVid.vid.id)
             
             return (
               
-           <SearchResult vid={z} />
+           <SearchResult vid={z} apiKey={apiKey}/>
           
             
            

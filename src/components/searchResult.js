@@ -7,7 +7,7 @@ const td = require("tinyduration")
 var moment = require('moment'); // require
 
 
-export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
+export default function SearchResult({ vid, isHomePage, apiKey, NavToWatchPage }) {
   //channel link when it's type is channel
   const channelLink = isHomePage ? 'https://youtube.com/channel/' + vid.snippet.channelId : 'https://youtube.com/channel/' + vid.id.channelId;
   //channel link when it's type is video
@@ -26,7 +26,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
   const [subCount, setSubCount] = useState()
   const [channelPic, setChannelPic] = useState()
   const [viewCount, setViewCount] = useState()
-  const [loading, setLoading] = useState(false)
+  const [busy, setBusy] = useState(false)
   
 
   const [duration, setDuration] = useState({
@@ -40,9 +40,10 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
 
   async function ChannelImg(id) {
     try {
-      setLoading(true)
+      setBusy(true)
       const response = await youtube.get("/channels", {
         params: {
+          key: apiKey,
           id: id,
           maxResults: 1,
         }
@@ -51,7 +52,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
       setChannelPic(response.data.items[0].snippet.thumbnails.default.url)
 
 
-      setLoading(false)
+      setBusy(false)
     }
     catch (error) {
       console.error('error:' + error)
@@ -61,9 +62,10 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
 
   async function ChannelSub(id) {
     try {
-      setLoading(true)
+      setBusy(true)
       const response = await youtube.get("/channels", {
         params: {
+          key: apiKey,
           part: 'statistics',
           id: id,
           maxResults: 1,
@@ -73,7 +75,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
       setSubCount(response.data.items[0].statistics.subscriberCount)
 
 
-      setLoading(false)
+      setBusy(false)
     }
     catch (error) {
       console.error('error:' + error)
@@ -83,9 +85,10 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
 
   async function grabVidInfo(id) {
     try {
-      setLoading(true)
+      setBusy(true)
       const response = await youtube.get("/videos", {
         params: {
+          key: apiKey,
           part: 'statistics',
           id: id,
           maxResults: 1,
@@ -94,6 +97,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
       setViewCount(response.data.items[0].statistics.viewCount)
       const response2 = await youtube.get("/videos", {
         params: {
+          key: apiKey,
           part: 'contentDetails',
           id: id,
           maxResults: 1
@@ -101,7 +105,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
       })   
       const d = moment.duration(response2.data.items[0].contentDetails.duration)
       setDuration({ ...duration, seconds: d._data.seconds, minutes: d._data.minutes, hours: d._data.hours })
-      setLoading(false)
+      setBusy(false)
     }
     catch (error) {
       console.error('error:' + error)
@@ -143,7 +147,7 @@ export default function SearchResult({ vid, isHomePage, NavToWatchPage }) {
 
 
 
-      {!loading ? <div className="test">
+      {!busy ? <div className="test">
         {resultType == 'youtube#channel' ? <a href={channelLink}> <img className="channelImg" src={imgSrc} alt="" /> </a> :
 
           <div className="thumbnailDuration"> 

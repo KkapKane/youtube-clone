@@ -1,6 +1,8 @@
 import Search from "./search";
 import '../style/topbar.scss'
+import React, {useState,useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -8,6 +10,11 @@ import {SiYoutube} from 'react-icons/si'
 
 export default function TopBar({onSearch, handleToggle}) {
     
+ 
+
+ 
+
+  
     const navigate = useNavigate();
 
     return (
@@ -18,7 +25,8 @@ export default function TopBar({onSearch, handleToggle}) {
             <SiYoutube size={30} color='red'/> <div style={{fontSize: '1rem'}}>YouTube</div>
             </div>
             </div>
-            <Search onSearch={onSearch}/> 
+            <Search onSearch={onSearch}/>
+            
         </div>
     )
 }
