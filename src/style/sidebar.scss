@@ -35,6 +35,7 @@
         height: 35px;
         width: 100%;
         align-items: center;
+        
         cursor: pointer;
         border-radius: 100vw;
         &:hover {
@@ -54,10 +55,12 @@
     .libraryHistory {
         display: flex;
         flex-direction: column;
-        border-top: 2px solid white;
+        border-top: 1px solid rgba($color: #989898, $alpha: .7);
+        border-bottom: 1px solid solid rgba($color: #989898, $alpha: .7);
         justify-content: center;
         height: 4rem;
         padding: 0px 12px;
+        
     }
 
     .explore {

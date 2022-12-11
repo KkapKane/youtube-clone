@@ -20,6 +20,7 @@ function App() {
   const [videoData, setVideoData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isHomePage, setHomePage] = useState(true)
+  const [isWatchPage, setIsWatchPage] = useState(false)
   const [currentCategory, setCurrentCategory] = useState(0)
   const [PopularVid, setPopularVid] = useState([])
   const [NPT, setNPT] = useState()
@@ -28,6 +29,8 @@ function App() {
   const [selectedVid, setSelectedVid] = useState({})
   const [apiKey,setApiKey] = useState();
   const [dbId,setDbId] = useState();
+  const [selectedVidId, setSelectedVidId] = useState()
+  
   const [isSetting, setIsSetting] = useState(false);
 
 async function updateApi(id,newKey) {
@@ -56,9 +59,13 @@ async function updateApi(id,newKey) {
   }
   
   
-  const NavToWatchPage = (vid) => {
+  const NavToWatchPage = (vid,videoId) => {
     navigate("/watchPage")
     setSelectedVid({vid})
+    setSelectedVidId({videoId})
+      
+   
+    console.log({selectedVid})
 
   }
   
@@ -158,7 +165,7 @@ async function updateApi(id,newKey) {
 
 
       <Settings isSetting={isSetting} dbId={dbId} updateApi={updateApi} setIsSetting={setIsSetting}/>
-      <TopBar onSearch={onSearch} handleToggle={handleToggle} />
+      <TopBar onSearch={onSearch} handleToggle={handleToggle} refreshCategory={refreshCategory} setHomePage={setHomePage} />
       {isHomePage ? <CategoryBar  refreshCategory={refreshCategory} /> : null}
       <SideBar refreshCategory={refreshCategory} isSideBar={isSideBar} />
       <Routes>
@@ -171,6 +178,7 @@ async function updateApi(id,newKey) {
           getApi={getApi}
           getMostPopular={getMostPopular}
           NavToWatchPage={NavToWatchPage}
+          
           PopularVid={PopularVid}
           page={page}
           apiKey={apiKey}
@@ -186,8 +194,14 @@ async function updateApi(id,newKey) {
         />} />
 
         <Route path="/watchPage" element={<WatchPage
+          isWatchPage={isWatchPage}
+          setIsWatchPage={setIsWatchPage}
           setIsSideBar={setIsSideBar}
           apiKey={apiKey}
+          selectedVidId={selectedVidId}
+          isHomePage={isHomePage}
+        
+          NavToWatchPage={NavToWatchPage}
           setHomePage={setHomePage}
           selectedVid={selectedVid} />} />
       </Routes>

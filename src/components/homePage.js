@@ -11,6 +11,7 @@ export default function HomePage({isHomePage,getApi, setHomePage, page, loading,
 
 useEffect(()=> {
 
+    
     getApi()
 
     getMostPopular(currentCategory)
@@ -28,7 +29,7 @@ useEffect(()=> {
             {PopularVid.map((x)=> {
                 return (
                     <div className="homepageVid" key={x.id} > 
-                    <SearchResult vid={x} apiKey={apiKey} isHomePage={isHomePage} NavToWatchPage={NavToWatchPage}/>
+                    <SearchResult vid={x} apiKey={apiKey} isHomePage={isHomePage}  NavToWatchPage={NavToWatchPage}/>
                     </div>
                 )
             })}

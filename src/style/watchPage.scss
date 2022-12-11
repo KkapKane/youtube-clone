@@ -21,11 +21,15 @@
         padding-left: 2%;
         margin-left: auto;
    
-        
-    iframe {
-        height: 60vh;
-        width: 100%;
+     .videoPlayer{
+        position: relative;
+        padding-top: 56.25%;   
+    .ReactPlayer {
+       position: absolute;
+       top: 0;
+       left: 0;
     }    
+}
        
     }
     .Title {
@@ -37,7 +41,7 @@
        
         font-size: .8rem;
         padding: 1rem;
-        background-color: rgb(223, 222, 222);
+        background-color: #dbdbdb;
         border-radius: 25px;
         
         --max-lines: 3;
@@ -83,7 +87,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
-                    background-color: rgb(187, 184, 184);
+                    background-color: #dbdbdb;
                     width: 4em;
                     height: 1em;
                     padding: .5em;
@@ -95,7 +99,7 @@
                     padding: .5em;
                     align-self: center;
                     height: 1em;
-                    background-color: rgb(187, 184, 184);
+                    background-color: #dbdbdb;
                     border-radius: 0px 50px 50px 0px;
                     cursor: pointer;
                 }
@@ -109,7 +113,7 @@
                 height: 1em;
                 width: 4em;
                 
-                background-color: rgb(187, 184, 184);
+                background-color: #dbdbdb;
                 padding: .6em;
                     cursor: pointer;
                 
@@ -119,7 +123,7 @@
                 align-items: center;
                 height: 1em;
                 border-radius: 100vw;
-                background-color: rgb(187, 184, 184);
+                background-color: #dbdbdb;
                 padding: .6em;
                     cursor: pointer;
             }
@@ -127,7 +131,7 @@
             .threeDot {
                 height: 1em;
                 border-radius: 100vw;
-                background-color: rgb(187, 184, 184);
+                background-color: #dbdbdb;
                 padding: .5em;
                 cursor: pointer;
             }
@@ -166,7 +170,7 @@
     bottom: 15%;
     right: 50%;
     appearance: none;
-    border: 1px solid black;
+    
     padding: .5em;
     border-radius: .25em;
     cursor: pointer
@@ -287,6 +291,7 @@ pre {
    }
 
    .commentSection {
+    padding: 1rem;
     max-height: 100%;
     
    }
@@ -309,7 +314,7 @@ pre {
     width: 100%;
     margin-left: 0 !important;
     
-iframe {
+    .ReactPlayer{
     align-items: center;
   
     height: 30vh;
@@ -324,11 +329,11 @@ iframe {
     
 
 .descriptionBox{
-    color: white;
+    color: black;
     max-width: 92%;
     font-size: .8rem;
     padding: 1rem;
-    background-color: rgba($color: #000000, $alpha: .7 ) !important;
+    background-color: #dbdbdb !important;
     border-radius: 0px !important;
     
     --max-lines: 1 !important;
@@ -447,20 +452,7 @@ iframe {
     display: none !important;
 }
 
-.expand-btn {
-    color: white;
-    position: absolute;
-    bottom: 40%;
-    right: 10%;
-    appearance: none;
-    border: 1px solid rgb(243, 243, 243);
-    padding: .5em;
-    border-radius: .25em;
-    cursor: pointer
-    
-    
 
-}
 
 .channelNameSubCount{
     display: flex;
@@ -472,7 +464,7 @@ iframe {
 .commentSection {
     padding: 2rem;
     height: 100%;
-
+    
     display: flex;
     flex-wrap: wrap;
     

@@ -3,21 +3,24 @@ import "../style/watchPage.scss"
 import SearchResult from "./searchResult"
 import youtube from "../youtube"
 import Comment from "./comment"
+import ReactPlayer from "react-player";
+
 
 import ConvertToM from "../functions/kFormatter";
 import {FaRegThumbsUp} from 'react-icons/fa'
 import {FaRegThumbsDown} from 'react-icons/fa'
 import {RiShareForwardLine} from 'react-icons/ri'
 import {BiListPlus,BiDotsHorizontalRounded} from 'react-icons/bi'
-import axios from "axios";
+
 
 var moment = require('moment'); // require
-export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey}) {
+export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey, NavToWatchPage, isHomePage, isWatchPage,setIsWatchPage}) {
     const timeAgo = moment(selectedVid.vid.snippet.publishedAt).fromNow();
     const [channelPic, setChannelPic] = useState()
     const [subCount, setSubCount] = useState()
     const [viewCount, setViewCount] = useState()
     const [likeCount,setLikeCount] = useState()
+    const videoId = selectedVid.vid.id.videoId === undefined ? selectedVid.vid.id : selectedVid.vid.id.videoId;
     const [comments, setComments] = useState()
     const [relatedVid,setRelatedVid] = useState({})
     const [loading, setLoading] = useState(false)
@@ -50,7 +53,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey
         async function getComments(id){
     
         try {
-          // const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAtyd7zyv1IQJM1re_Zrx698rT5bcVu7fg&textFormat=plainText&part=snippet&videoId=${id}&maxResults=5`)
+          
           const response = await youtube.get("/commentThreads", {
             params: {
               key: apiKey,
@@ -134,7 +137,7 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey
   txt
     .split(" ")
     .map(part =>
-      URL_REGEX.test(part) ? <a style={{color:'blue'}} href={part}>{part} </a> : part + " "
+      URL_REGEX.test(part) ? <a style={{color:'#3f51b5'}} href={part}>{part} </a> : part + " "
     );
 
    
@@ -143,23 +146,32 @@ export default function WatchPage({setHomePage,selectedVid, setIsSideBar, apiKey
 
 
 useEffect(() => {
+  
+  
 setHomePage(false)
 setIsSideBar(false)
+setIsWatchPage(true)
 ChannelImg(selectedVid.vid.snippet.channelId)
 ChannelSub(selectedVid.vid.snippet.channelId)
-grabVidInfo(selectedVid.vid.id)
-findRelatedVid(selectedVid.id)
-console.log(selectedVid)
-getComments(selectedVid.vid.id)
 
-},[])
+grabVidInfo(videoId)
+findRelatedVid(selectedVid.id)
+
+getComments(videoId)
+
+
+},[selectedVid])
    
     return (
         <div className="watchPage">
             <div className="videoContainer">
-            <iframe className="vid" src={`https://www.youtube.com/embed/${selectedVid.vid.id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-            </iframe>
+            
+            <div className="videoPlayer">
+            <ReactPlayer className="ReactPlayer" url={`https://www.youtube.com/embed/${videoId}`}
+            width="100%"
+            height="100%"
+            playing={true}  />
+            </div>
             <div className="Title">{selectedVid.vid.snippet.title}</div>
             <div className="channelContainerAndYoutubeOptions">
             <div className="channelInfo">
@@ -208,7 +220,7 @@ getComments(selectedVid.vid.id)
             
             return (
               
-           <SearchResult vid={z} apiKey={apiKey}/>
+           <SearchResult  vid={z} apiKey={apiKey}  NavToWatchPage={NavToWatchPage} isHomePage={isHomePage} isWatchPage={isWatchPage} setIsWatchPage={setIsWatchPage}/>
           
             
            

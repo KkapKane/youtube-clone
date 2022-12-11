@@ -8,10 +8,15 @@ import axios from "axios";
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {SiYoutube} from 'react-icons/si'
 
-export default function TopBar({onSearch, handleToggle}) {
+export default function TopBar({onSearch, handleToggle, refreshCategory, setHomePage}) {
     
  
-
+function goHome(){
+    setHomePage(true)
+    refreshCategory(0)
+    navigate('/')
+    
+}
  
 
   
@@ -21,7 +26,7 @@ export default function TopBar({onSearch, handleToggle}) {
         <div className="topBar">
             <div className="hamburgerLogo">
             <GiHamburgerMenu size={25} className="hamburger" onClick={()=> handleToggle()}/>
-            <div onClick={()=>navigate('/')} className="youtubeLogo">
+            <div onClick={()=>goHome()} className="youtubeLogo">
             <SiYoutube size={30} color='red'/> <div style={{fontSize: '1rem'}}>YouTube</div>
             </div>
             </div>

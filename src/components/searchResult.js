@@ -48,7 +48,7 @@ export default function SearchResult({ vid, isHomePage, apiKey, NavToWatchPage }
           maxResults: 1,
         }
       })
-
+    
       setChannelPic(response.data.items[0].snippet.thumbnails.default.url)
 
 
@@ -151,7 +151,7 @@ export default function SearchResult({ vid, isHomePage, apiKey, NavToWatchPage }
         {resultType == 'youtube#channel' ? <a href={channelLink}> <img className="channelImg" src={imgSrc} alt="" /> </a> :
 
           <div className="thumbnailDuration"> 
-            <img onClick={()=>NavToWatchPage(vid)} className="videoImg" src={imgSrc} alt="" />
+            <img onClick={()=>NavToWatchPage(vid,videoId)} className="videoImg" src={imgSrc} alt="" />
             {duration.seconds > 10 ? <div className="duration">{duration.minutes}:{duration.seconds} </div> : <div className="duration">{duration.minutes}:0{duration.seconds} </div>}
           
           </div>
