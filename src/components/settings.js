@@ -1,29 +1,23 @@
-import "../style/Settings.scss"
-import React, { useState } from "react"
+import "../style/Settings.scss";
+import React, { useState } from "react";
 
+export default function Settings({ isSetting, updateApi, dbId, setIsSetting }) {
+  const [title, setTitle] = useState("");
 
-export default function Settings({isSetting, updateApi, dbId, setIsSetting}) {
+  const inputChange = (event) => {
+    setTitle(event.target.value);
+  };
 
-    const [title,setTitle] = useState("")
+  function handleClick(title) {
+    updateApi(dbId, title);
+    setIsSetting(false);
+  }
 
-    const inputChange = event => {
-        
-        setTitle(event.target.value)
-        
-        
-    }
-    
-
-    function handleClick(title) {
-        updateApi(dbId, title)
-        setIsSetting(false)
-    }
-
-    return (
-        <div style={isSetting ?{display:'flex'}: {}}className="Settings">
-            <div className="Text">Enter the new api key</div>
-            <input onChange={inputChange} type="text" />
-            <button onClick={()=> handleClick(title)}>Submit</button>
-        </div>
-    )
+  return (
+    <div style={isSetting ? { display: "flex" } : {}} className='Settings'>
+      <div className='Text'>Enter the new api key</div>
+      <input onChange={inputChange} type='text' />
+      <button onClick={() => handleClick(title)}>Submit</button>
+    </div>
+  );
 }

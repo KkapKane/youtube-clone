@@ -1,122 +1,111 @@
 .searchPage {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin-inline: auto;
+  justify-content: center;
+  padding: max(15vh, 2rem);
+
+  .searchResult {
     display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
     margin-inline: auto;
-    justify-content: center;
-    padding: max(15vh,2rem);
-    
-    .searchResult {
-        display: flex;
-        margin-inline: auto;
-     
-        flex-direction: column;
-        padding: 1rem;
-        flex: 0;
-        width: max(50vw, 20rem);
-        height: 12rem;
-        
-      
 
-        .channelImg{
-            height: 150px; 
-            border-radius: 205px;
-        }
+    flex-direction: column;
+    padding: 1rem;
+    flex: 0;
+    width: max(50vw, 20rem);
+    height: 12rem;
 
-        .videoImg {
-            height: 100%;
-            border-radius: 15px;
-        }
+    .channelImg {
+      height: 150px;
+      border-radius: 205px;
     }
 
-    .test {
-        display: flex;
-        align-items: center;
-        width: max(30vw, 80rem);
-        
-        
-        
-        .thumbnailDuration {
-            display: flex;
-           
-            flex-direction: column;
-            position: relative;
-            
-       .duration{
-    
+    .videoImg {
+      height: 100%;
+      border-radius: 15px;
+    }
+  }
+
+  .test {
+    display: flex;
+    align-items: center;
+    width: max(30vw, 80rem);
+
+    .thumbnailDuration {
+      display: flex;
+
+      flex-direction: column;
+      position: relative;
+
+      .duration {
         position: absolute;
         bottom: 5%;
         left: 85%;
-        font-size: .8rem;
+        font-size: 0.8rem;
         width: 35px;
         color: white;
-        background-color: rgba($color: #000000, $alpha: .6);
-       } 
+        background-color: rgba($color: #000000, $alpha: 0.6);
+      }
     }
 
-        .videoInfo {
-            display: flex;
-            height: 12rem;
-            width: max(20vw, 600px);
-            padding-left: 1rem;
-            justify-content: center;
-            flex-direction: column;
-          
-            text-overflow: ellipsis;
+    .videoInfo {
+      display: flex;
+      height: 12rem;
+      width: max(20vw, 600px);
+      padding-left: 1rem;
+      justify-content: center;
+      flex-direction: column;
 
-            .vidTitle {
-                display: flex;
-                font-family: "Roboto","Arial",sans-serif;
-                font-size: clamp(1.2rem, 1vw + .2rem, 5rem);
-                line-height: 1.6rem;
-                font-weight: 400;
-           
-                -webkit-box-orient: vertical;
-                text-overflow: ellipsis;
-                white-space: normal;
+      text-overflow: ellipsis;
 
+      .vidTitle {
+        display: flex;
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: clamp(1.2rem, 1vw + 0.2rem, 5rem);
+        line-height: 1.6rem;
+        font-weight: 400;
 
-            }
-            .videoInfoBox {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        white-space: normal;
+      }
+      .videoInfoBox {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
 
-                .smallChannelInfo{
-                    display: flex;
-                    align-items: center;
-                }
-
-            .description {
-                font-size: .7rem;
-            }
-                
-            .viewDate {
-                font-size: .8rem;
-                display: flex;
-                align-items: center;
-                gap: .3rem;
-            }
-
+        .smallChannelInfo {
+          display: flex;
+          align-items: center;
         }
-        
+
+        .description {
+          font-size: 0.7rem;
         }
+
+        .viewDate {
+          font-size: 0.8rem;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+        }
+      }
     }
+  }
 }
 
 .channelInfo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    .videoChannelImg{
-              
-        width: 24px;
-        border-radius: 100px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  .videoChannelImg {
+    width: 24px;
+    border-radius: 100px;
+  }
 
-    a {
-        font-size: .7rem;
-        text-decoration: none;
-    }
-
+  a {
+    font-size: 0.7rem;
+    text-decoration: none;
+  }
 }

@@ -1,25 +1,25 @@
 .HomePage {
-    display: flex;
-    justify-content: center;
-  
-    padding-left: 15rem;
-    padding-top: 3rem;
-    height:  100%;
+  display: flex;
+  justify-content: center;
+
+  padding-left: 15rem;
+  padding-top: 3rem;
+  height: 100%;
 
   .HomePageContent {
     display: flex;
 
-    padding: 6rem;
+    padding: 6rem 6rem 6rem 0px;
+
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
     margin-inline: auto;
 
     .homepageVid {
-    
-      width: max(300px, 15%);
+      width: max(325px, 15%);
       cursor: pointer;
-      .searchResult{
+      .searchResult {
         width: 100%;
       }
     }
@@ -27,95 +27,84 @@
       font-size: 1rem;
       font-weight: 500;
       overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-            -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .videoInfoBox {
-      
       display: flex;
       gap: 1rem;
-      padding: .5rem;
-      
+      padding: 0.5rem;
+
       width: 100%;
       height: 5rem;
-      
-      a{
-        font-size: .8rem;
+
+      a {
+        font-size: 0.8rem;
         font-weight: 500;
       }
     }
 
     img {
       height: 12rem;
-      width: 100%; 
+      width: 100%;
       border-radius: 12px;
     }
 
-   .viewDate {
-    display: flex;
-    padding-top: .5rem;
-    font-size: .8rem;
-    gap: .2rem;
-   }
-   .channelInfo {
-    display: flex;
-    
- 
-   }
-   .videoChannelImg {
-   
-    width: 32px;
-    height: 32px;
-   }
-   .thumbnailDuration {
-    display: flex;
-           
-    flex-direction: column;
-    position: relative;
-   .duration {
-    position: absolute;
+    .viewDate {
+      display: flex;
+      padding-top: 0.5rem;
+      font-size: 0.8rem;
+      gap: 0.2rem;
+    }
+    .channelInfo {
+      display: flex;
+    }
+    .videoChannelImg {
+      width: 32px;
+      height: 32px;
+    }
+    .thumbnailDuration {
+      display: flex;
+
+      flex-direction: column;
+      position: relative;
+      .duration {
+        position: absolute;
         bottom: 6%;
-        left: 80%;
-        font-size: .8rem;
+        left: 85%;
+        font-size: 0.8rem;
         width: 35px;
         color: white;
-        background-color: rgba($color: #000000, $alpha: .6);
-   }
-  }
+        background-color: rgba($color: #000000, $alpha: 0.6);
+      }
+    }
   }
 }
 
 .test {
-  
   max-width: 100%;
 }
 
-
-@media(max-width: 900px){
-
+@media (max-width: 900px) {
   .HomePage {
     display: flex;
     padding: 0 !important;
     max-height: 100%;
-    
   }
-  .HomePageContent{
+  .HomePageContent {
     justify-content: center;
-    
+
     max-width: 100%;
-    max-height: 100%; 
+    max-height: 100%;
     padding: 0 !important;
     margin-top: 20%;
     gap: 1rem !important;
-    
   }
 
- 
-  
-  
-
-
+  .vidTitle {
+    font-size: 1.3rem !important;
+  }
 }

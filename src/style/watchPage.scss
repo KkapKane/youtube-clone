@@ -1,305 +1,299 @@
 .watchPage {
-    display: flex;
-   
-    gap: 1rem;
-    height: 100%;
-    width: 100%;
+  display: flex;
 
-    a {
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+
+  a {
     cursor: pointer;
-    }
+  }
 
-    .channelLogo {
-        height: 2.4rem;
-        border-radius: 100vw;
-    }
+  .channelLogo {
+    height: 2.4rem;
+    border-radius: 100vw;
+  }
 
-    .videoContainer {
+  .videoContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    padding-left: 2%;
+    margin-left: auto;
+    gap: 1rem;
+    .videoPlayer {
+      position: relative;
+      padding-top: 56.25%;
+      .ReactPlayer {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  .Title {
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+  .descriptionBox {
+    font-size: 0.8rem;
+    padding: 1rem;
+    background-color: #dbdbdb;
+    border-radius: 25px;
+
+    --max-lines: 3;
+    --line-height: 1.8;
+    max-height: calc(var(--max-lines) * 1em * var(--line-height));
+    line-height: var(--line-height);
+    overflow: hidden;
+    position: relative;
+    width: calc(75vh * 1.77);
+
+    .viewDate {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .channelContainerAndYoutubeOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .youtubeOptions {
+      gap: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .thumbs {
+        height: 1em;
+        width: 8rem;
+
         display: flex;
-        flex-direction: column;
-        padding-top: 4rem;
-        padding-left: 2%;
-        margin-left: auto;
-   
-     .videoPlayer{
-        position: relative;
-        padding-top: 56.25%;   
-    .ReactPlayer {
-       position: absolute;
-       top: 0;
-       left: 0;
-    }    
-}
-       
-    }
-    .Title {
-      
-        font-size: 1.3rem;
-    }
 
-    .descriptionBox {
-       
-        font-size: .8rem;
-        padding: 1rem;
-        background-color: #dbdbdb;
-        border-radius: 25px;
-        
-        --max-lines: 3;
-        --line-height: 1.8;
-        max-height: calc(var(--max-lines) * 1em * var(--line-height));
-        line-height: var(--line-height);
-        overflow: hidden;
-        position: relative;
-        width:calc(75vh * 1.77);
-            
-           
+        align-items: center;
 
-    
-
-        .viewDate {
-            display: flex;
-            gap: .5rem;
+        .thumbsUp {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          background-color: #dbdbdb;
+          border-right: 1px solid rgb(204, 204, 204);
+          width: 4em;
+          height: 1em;
+          padding: 0.5em;
+          border-radius: 50px 0px 0px 50px;
+          cursor: pointer;
+          &:hover {
+            background-color: #c5c5c5;
+          }
         }
-    }
-
-    .channelContainerAndYoutubeOptions{
+        .thumbsDown {
+          display: flex;
+          padding: 0.5em;
+          align-self: center;
+          height: 1em;
+          background-color: #dbdbdb;
+          border-radius: 0px 50px 50px 0px;
+          cursor: pointer;
+          &:hover {
+            background-color: #c5c5c5;
+          }
+        }
+      }
+      .share {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        
-        .youtubeOptions {
-           
-            gap: 1em;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        border-radius: 100vw;
+        height: 1em;
+        width: 4em;
 
-            .thumbs {
-                height: 1em;
-                width: 8rem;
-                
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                gap:.1em;
-
-                .thumbsUp {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-around;
-                    background-color: #dbdbdb;
-                    width: 4em;
-                    height: 1em;
-                    padding: .5em;
-                    border-radius: 50px 0px 0px 50px;
-                        cursor: pointer;
-                }
-                .thumbsDown{
-                    display: flex;
-                    padding: .5em;
-                    align-self: center;
-                    height: 1em;
-                    background-color: #dbdbdb;
-                    border-radius: 0px 50px 50px 0px;
-                    cursor: pointer;
-                }
-                
-                
-            }
-            .share {
-                display: flex;
-                align-items: center;
-                border-radius: 100vw;
-                height: 1em;
-                width: 4em;
-                
-                background-color: #dbdbdb;
-                padding: .6em;
-                    cursor: pointer;
-                
-            }
-            .save {
-                display: flex;
-                align-items: center;
-                height: 1em;
-                border-radius: 100vw;
-                background-color: #dbdbdb;
-                padding: .6em;
-                    cursor: pointer;
-            }
-
-            .threeDot {
-                height: 1em;
-                border-radius: 100vw;
-                background-color: #dbdbdb;
-                padding: .5em;
-                cursor: pointer;
-            }
+        background-color: #dbdbdb;
+        padding: 0.6em;
+        cursor: pointer;
+        &:hover {
+          background-color: #c5c5c5;
         }
+      }
+      .save {
+        display: flex;
+        align-items: center;
+        height: 1em;
+        border-radius: 100vw;
+        background-color: #dbdbdb;
+        padding: 0.6em;
+        cursor: pointer;
+        &:hover {
+          background-color: #c5c5c5;
+        }
+      }
+
+      .threeDot {
+        height: 1em;
+        border-radius: 100vw;
+        background-color: #dbdbdb;
+        padding: 0.5em;
+        cursor: pointer;
+        &:hover {
+          background-color: #c5c5c5;
+        }
+      }
     }
-    
-    
-    .channelInfo{
-        padding: 1em;
-        .channelNameSubCount{
-            font-size: .8em;
-        }
-        .subscribeBtn {
-            color: white;
-            background-color: #333;
-            padding: .6em;
-            border-radius: 25px;
-            
-            cursor: pointer;
-        }
+  }
+
+  .channelInfo {
+    padding: 1em;
+    .channelNameSubCount {
+      font-size: 0.8em;
     }
-  
+    .subscribeBtn {
+      color: white;
+      background-color: #333;
+      padding: 0.6em;
+      border-radius: 25px;
+
+      cursor: pointer;
+    }
+  }
+}
+
+.vidTitle {
+  cursor: pointer;
 }
 
 .descriptionBox::before {
-    content: "";
-    position: absolute;
-    height: calc(1em * var(--line-height));
-    width: 100%;
-    bottom: 0;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  height: calc(1em * var(--line-height));
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
 }
 
 .expand-btn {
-  
-    bottom: 15%;
-    right: 50%;
-    appearance: none;
-    
-    padding: .5em;
-    border-radius: .25em;
-    cursor: pointer
-    
-    
+  bottom: 15%;
+  right: 50%;
+  appearance: none;
 
+  padding: 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
 }
 
 .expand-btn::before {
-    content: "show more"
+  content: "show more";
 }
 
 .expand-btn:checked::before {
-    content: "show less";
+  content: "show less";
 }
 
-.descriptionBox:has(+ .expand-btn:checked){
-    max-height: none;
+.descriptionBox:has(+ .expand-btn:checked) {
+  max-height: none;
 }
 
 pre {
-    font-family: 'Roboto';
-    white-space: pre-wrap;       /* css-3 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-   }
+  font-family: "Roboto";
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
 
-   .relatedVidContainer {
+.relatedVidContainer {
+  display: flex;
+  zoom: 0.8;
+  flex-direction: column;
+  padding-top: 5rem;
+  margin-right: auto;
+  gap: 1rem;
+
+  .test {
     display: flex;
-    zoom: .8;
-    flex-direction: column;
-    padding-top: 5rem;
-    margin-right: auto;
-    gap: 1rem;
-   
-    .test {
-        display: flex;
-        height: 8em;
-        width: 100%;
+    height: 8em;
+    width: 100%;
 
-        
+    .videoInfo {
+      display: flex;
+      flex-direction: column;
+      max-width: 40%;
+      padding-left: 1em;
+      padding-top: 4px;
 
-        .videoInfo {
-            display: flex;
-            flex-direction: column;
-            max-width: 40%;
-            padding-left: 1em;
-            padding-top: 4px;
-            
-            .channelInfo{
-                line-height: 1.4em;
-                padding: 0;
-            }
+      .channelInfo {
+        line-height: 1.4em;
+        padding: 0;
+      }
 
-            .vidTitle {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-            -webkit-box-orient: vertical;
-            font-size: 1.2rem;
-            font-weight: 500;
-            
-            }
-        }
-        .thumbnailDuration{
-            display: flex;
-            align-items: center;
-            position: relative;
-            
-            .duration {
-                font-size: .8em;
-                color: white;
-                background-color: rgba($color: #000000, $alpha: .8);
-                position: absolute;
-                bottom: 10%;
-                left: 82%;
-            }
-        }
-        .videoImg {
-            max-height: 100%;
-            width: 100%;
-            border-radius: 15px;
-        }
-        .videoInfoBox{
-            display: flex;
-            flex-direction: column-reverse;
-
-            .videoChannelImg{
-                display: none;
-            }
-
-            .viewDate {
-                font-size: .8em;
-            }
-           
-        }
+      .vidTitle {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
     }
-   
-    .description {
-        display: none;
-    }
+    .thumbnailDuration {
+      display: flex;
+      align-items: center;
+      position: relative;
 
+      .duration {
+        font-size: 0.8em;
+        color: white;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        position: absolute;
+        bottom: 10%;
+        left: 82%;
+      }
+    }
+    .videoImg {
+      max-height: 100%;
+      width: 100%;
+      border-radius: 15px;
+    }
     .videoInfoBox {
-        display: flex;
-        flex-direction: row-reverse;
+      display: flex;
+      flex-direction: column-reverse;
 
-        
-        
-        .viewDate {
-            display: flex;
-        }
+      .videoChannelImg {
+        display: none;
+      }
+
+      .viewDate {
+        font-size: 0.8em;
+      }
     }
-    
-   }
+  }
 
-   .commentSection {
-    padding: 1rem;
-    max-height: 100%;
-    
-   }
+  .description {
+    display: none;
+  }
 
+  .videoInfoBox {
+    display: flex;
+    flex-direction: row-reverse;
 
- 
+    .viewDate {
+      display: flex;
+    }
+  }
+}
 
-@media screen and (max-width: 900px){
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 900px) {
   .watchPage {
     max-width: 100%;
     padding-top: 15%;
@@ -307,85 +301,77 @@ pre {
     flex-wrap: wrap;
   }
   .videoContainer {
-  
     margin: 0;
     padding-top: 0 !important;
     padding-left: 0 !important;
     width: 100%;
     margin-left: 0 !important;
-    
-    .ReactPlayer{
-    align-items: center;
-  
-    height: 30vh;
-    width: 100%;
-}    
-   
-}
 
-.Title{
+    .ReactPlayer {
+      align-items: center;
+
+      height: 30vh;
+      width: 100%;
+    }
+  }
+
+  .Title {
     font-size: 14px;
-}       
-    
+  }
 
-.descriptionBox{
+  .descriptionBox {
     color: black;
     max-width: 92%;
-    font-size: .8rem;
+    font-size: 0.8rem;
     padding: 1rem;
     background-color: #dbdbdb !important;
     border-radius: 0px !important;
-    
+
     --max-lines: 1 !important;
     --line-height: 1.8;
     max-height: calc(var(--max-lines) * 1em * var(--line-height));
     line-height: var(--line-height);
     overflow: hidden;
     position: relative;
-    
-        
-}
+  }
 
-.channelContainerAndYoutubeOptions {
+  .channelContainerAndYoutubeOptions {
     flex-direction: column;
     justify-content: flex-start;
-    
+
     .subscribeBtn {
-        display: none;
+      display: none;
     }
 
     .channelInfo {
-       padding: 0 !important;
-       align-self: start;
+      padding: 0 !important;
+      align-self: start;
     }
-}
+  }
 
-
-.searchResult{
+  .searchResult {
     width: 100%;
-}
+  }
 
-    .vidTitle {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* number of lines to show */
-       line-clamp: 2; 
-        -webkit-box-orient: vertical;
-        font-size: 1.2rem;
-        max-width: 100%;
-        }
-    
+  .vidTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 1.2rem;
+    max-width: 100%;
+  }
 
-.videoImg {
+  .videoImg {
     border-radius: 0 !important;
     width: 100%;
-    
-}
+  }
 
-.relatedVidContainer {
+  .relatedVidContainer {
     display: flex;
-    
+
     align-items: center;
     width: 100%;
     gap: 16rem;
@@ -393,86 +379,66 @@ pre {
     padding: 0;
 
     .test {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
-    
-    
-}
-.relatedVid{
+  }
+  .relatedVid {
     max-width: 100%;
-}
+  }
 
-.channelInfo{
+  .channelInfo {
     flex-direction: row;
     max-width: 100%;
     font-size: 1.3rem;
-    
-    
-}
+  }
 
-.smallChannelInfo{
+  .smallChannelInfo {
     display: flex;
-    gap: .5em;
+    gap: 0.5em;
     align-items: center;
 
-    .videoChannelImg{
-        max-width: 40px;
+    .videoChannelImg {
+      max-width: 40px;
     }
     a {
-        font-weight: 800;
-        font-size: 1.2rem;
+      font-weight: 800;
+      font-size: 1.2rem;
     }
-}
+  }
 
-.videoChannelImg{
+  .videoChannelImg {
     display: block !important;
-    
-}
+  }
 
-.viewDate {
+  .viewDate {
     max-width: 100%;
-}
-.videoInfoBox {
+  }
+  .videoInfoBox {
     max-width: 100%;
-}
+  }
 
-.videoInfo{
+  .videoInfo {
     margin: 0 !important;
     padding: 0 !important;
     max-width: 100% !important;
-    
-    
-}
+  }
 
-
-
-.youtubeOptions{
+  .youtubeOptions {
     display: none !important;
-}
+  }
 
-
-
-.channelNameSubCount{
+  .channelNameSubCount {
     display: flex;
     gap: 1rem;
-}
+  }
 
-
-
-.commentSection {
+  .commentSection {
     padding: 2rem;
     height: 100%;
-    
+
     display: flex;
     flex-wrap: wrap;
-    
+  }
 }
-} 
-
-
-
-
-   
- 

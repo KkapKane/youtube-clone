@@ -1,103 +1,93 @@
 #root {
-    width: 100vw;
-    
+  width: 100vw;
 }
 .topBar {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    color: black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: black;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  height: 56px;
+  z-index: 98;
+
+  .Search {
+    display: flex;
+    grid-column: 2/4;
     width: 100%;
-    background-color: white;
     justify-content: center;
     align-items: center;
-    position: fixed;
-  
-    height: 56px;
-    z-index: 98;
 
-  
-    .Search {
-        display: flex;
-        grid-column: 2/4;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-
-     
-        
-        #video-Search {
-            display: flex;
-            
-        }
-        form {
-            display: flex;
-            align-items: center;
-            width: 80%;
-         
-        }
-
-        .searchIcon {
-            display: flex;
-            align-items: center;
-            height: 2.5rem;
-            justify-content: center;
-            width: 4rem;
-            border: 1px solid black;
-            border-radius: 0px 50px 50px 0px;
-            cursor: pointer;
-
-        }
-        input {
-            width: 100%;
-            height: 2.3rem;
-            border-radius: 50px 0px 0px 50px;
-        }
+    #video-Search {
+      display: flex;
+      border: 1px solid rgb(147, 146, 146);
     }
-    
-
-    .hamburgerLogo {
-        display: flex;
-        padding-left: 2rem;
-        gap: 1rem;
-        align-items: center;
-        cursor: pointer;
-    }
-    .hamburger {
-        color: black;
+    form {
+      display: flex;
+      align-items: center;
+      width: 80%;
     }
 
-    .youtubeLogo {
-        display: flex;
-        
-        font-size: 1.4rem;
-        font-weight: 800;
-        align-items: center;
-        gap: .5rem;
-        cursor: pointer;
+    .searchIcon {
+      display: flex;
+      align-items: center;
+      height: 2.4rem;
+      justify-content: center;
+      width: 4rem;
+      border: 1px solid rgb(147, 146, 146);
+      border-radius: 0px 50px 50px 0px;
+      cursor: pointer;
     }
+    input {
+      width: 100%;
+      height: 2.3rem;
+      border-radius: 50px 0px 0px 50px;
+    }
+  }
+
+  .hamburgerLogo {
+    display: flex;
+    padding-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+  }
+  .hamburger {
+    color: black;
+  }
+
+  .youtubeLogo {
+    display: flex;
+
+    font-size: 1.4rem;
+    font-weight: 800;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
 }
 
-
 @media screen and (max-width: 900px) {
-    .topBar {
-        display: flex;
-        color: white;
-        background-color: rgba($color: #000000, $alpha: .9);
-        
-        align-items: center;
-    }
-    #video-Search {
-        display: none !important;
-        height: 50%;
-    }
+  .topBar {
+    display: flex;
+    color: white;
+    background-color: rgba($color: #000000, $alpha: 0.9);
 
-    
-    form {
-        justify-content: end;
-    }
- 
+    align-items: center;
+  }
+  #video-Search {
+    display: none !important;
+    height: 50%;
+  }
 
-    .hamburger {
-        display: none;
-    }
+  form {
+    justify-content: end;
+  }
+
+  .hamburger {
+    display: none;
+  }
 }

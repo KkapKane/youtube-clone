@@ -1,134 +1,132 @@
 .sideBar {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: max(10%, 10rem);
+  color: black;
+  background-color: white;
+  overflow: hidden;
+  flex: 1;
+  flex-basis: 1e-9px;
+  left: 0;
+  position: fixed;
+  top: 50px;
+  gap: 12px;
+  padding: 20px;
+  z-index: 99;
+  transition: transform 1000ms;
 
-    height: 90vh;
-    width: max(10%,10rem);
-    
-    color: black;
-    
-    overflow: hidden;
-
-    flex: 1;
-    flex-basis: 1e-9px;
-    left: 0;
-    position: fixed;
-    top: 50px;
-    gap: 12px;
-    padding: 20px;
-    
-    transition: transform 1000ms;
-
-    &:hover {
-        overflow-y: auto;
-        
-    }
+  &:hover {
+    overflow-y: auto;
+  }
 }
-    #sideTab {
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        font-size: .9rem;
-        font-weight: 400px;
-        line-height: 24px;
-        padding: 5px 12px;
-        height: 35px;
-        width: 100%;
-        align-items: center;
-        
-        cursor: pointer;
-        border-radius: 100vw;
-        &:hover {
-            background-color: rgb(224, 219, 219);
+#sideTab {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 400px;
+  line-height: 24px;
+  padding: 5px 12px;
+  height: 35px;
+  width: 100%;
+  align-items: center;
 
-        }
-     
-    }
-    
+  cursor: pointer;
+  border-radius: 100vw;
 
-    .home {
-        display: flex;
-        flex-direction: column;
-        padding: 0px 12px;
-    }
+  &:hover {
+    background-color: rgb(224, 219, 219);
+  }
+}
 
-    .libraryHistory {
-        display: flex;
-        flex-direction: column;
-        border-top: 1px solid rgba($color: #989898, $alpha: .7);
-        border-bottom: 1px solid solid rgba($color: #989898, $alpha: .7);
-        justify-content: center;
-        height: 4rem;
-        padding: 0px 12px;
-        
-    }
+.home {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 12px;
+}
 
-    .explore {
-        display: flex;
-        flex-direction: column;
-        border-top: 2px solid white;
-        padding: 0px 12px;
-    }
+.libraryHistory {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba($color: #989898, $alpha: 0.7);
+  border-bottom: 1px solid solid rgba($color: #989898, $alpha: 0.7);
+  justify-content: center;
+  height: 4rem;
+  padding: 0px 12px;
+}
 
-    .browseChannel {
-        display: flex;
-   
-        align-items: center;
-     
-        height: 3rem;
-        padding: 0px 12px;
-        
-    }
+.explore {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid white;
+  padding: 0px 12px;
+}
 
-    .Settings {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        
-        height: 10rem;
-        padding: 0px 12px;
-    }
+.browseChannel {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding: 0px 12px;
+}
 
-    .moreFromYoutube {
-        .icon {
-            color: red;
-        }
-    }
+.Settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 10rem;
+  padding: 0px 12px;
+}
 
-  
-
+.moreFromYoutube {
+  .icon {
+    color: red;
+  }
+}
 
 .sideBar::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .sideBar::-webkit-scrollbar-track {
-    background-color: rgb(203, 193, 193);
-    width: 1.5em;
-    margin-block: 2rem;
-    
+  background-color: rgb(203, 193, 193);
+  width: 1.5em;
+  margin-block: 2rem;
 }
 
 .sideBar::-webkit-scrollbar-thumb {
-    background-color: rgb(147, 143, 143);
-    border-radius: 100vw;
-    width: 1.5em;
-    
-    
+  background-color: rgb(147, 143, 143);
+  border-radius: 100vw;
+  width: 1.5em;
 }
 
-
 .HideSideBar {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 10%;
+  color: black;
+  overflow: hidden;
+  flex: 1;
+  flex-basis: 1e-9px;
+  left: 0;
+  position: fixed;
+  top: 50px;
+  gap: 12px;
+  padding: 20px;
+  transition: transform 1000ms;
+  transform: translateX(-100%);
+  transition: 1000ms;
+}
+
+@media (max-width: 800px) {
+  .sideBar {
     display: flex;
     flex-direction: column;
-
     height: 90vh;
     width: 10%;
-    
     color: black;
-    
     overflow: hidden;
-
     flex: 1;
     flex-basis: 1e-9px;
     left: 0;
@@ -136,36 +134,6 @@
     top: 50px;
     gap: 12px;
     padding: 20px;
-    
-    transition: transform 1000ms;
     transform: translateX(-100%);
-    transition: 1000ms;
-}
-
-@media(max-width: 800px){
-    .sideBar {
-        display: flex;
-        flex-direction: column;
-    
-        height: 90vh;
-        width: 10%;
-        
-        color: black;
-        
-        overflow: hidden;
-    
-        flex: 1;
-        flex-basis: 1e-9px;
-        left: 0;
-        position: fixed;
-        top: 50px;
-        gap: 12px;
-        padding: 20px;
-        
-       
-        transform: translateX(-100%);
-       
-    }
-
-    
+  }
 }
