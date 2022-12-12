@@ -1,7 +1,7 @@
 import SearchResult from "./searchResult";
 import "../style/searchPage.scss";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function SearchPage({
   loading,
