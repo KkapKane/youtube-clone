@@ -14,21 +14,24 @@ export default function HomePage({
   PopularVid,
   currentCategory,
   NavToWatchPage,
+  isSideBar,
   setIsSideBar,
 }) {
   useEffect(() => {
+    
     getApi();
     getMostPopular(currentCategory);
     setHomePage(true);
     setIsSideBar(true);
+
   }, [page]);
 
   return (
-    <div className='HomePage'>
+    <div className='HomePage' style={isSideBar ? {paddingLeft: "10%" } : {paddingLeft: "0%"} }>
       {loading ? (
         <div>...loading</div>
       ) : (
-        <div className='HomePageContent'>
+        <div className='HomePageContent' style={isSideBar ? {} : {paddingLeft: "0%"}}>
           {PopularVid.map((x) => {
             return (
               <div className='homepageVid' key={x.id}>

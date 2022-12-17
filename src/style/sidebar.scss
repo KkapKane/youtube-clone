@@ -1,11 +1,11 @@
 .sideBar {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 100vh;
   width: max(10%, 10rem);
   color: black;
   background-color: white;
-  overflow: hidden;
+  
   flex: 1;
   flex-basis: 1e-9px;
   left: 0;
@@ -14,7 +14,7 @@
   gap: 12px;
   padding: 20px;
   z-index: 99;
-  transition: transform 1000ms;
+
 
   &:hover {
     overflow-y: auto;
@@ -23,7 +23,7 @@
 #sideTab {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 22px;
   font-size: 1rem;
   font-weight: 400px;
   line-height: 24px;
@@ -101,22 +101,22 @@
 }
 
 .HideSideBar {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 90vh;
-  width: 10%;
+  width: 3%;
+  position: fixed;
   color: black;
+  background-color: white;
   overflow: hidden;
   flex: 1;
   flex-basis: 1e-9px;
   left: 0;
-  position: fixed;
-  top: 50px;
+  z-index: 99;
+  top: 5%;
   gap: 12px;
-  padding: 20px;
-  transition: transform 1000ms;
-  transform: translateX(-100%);
-  transition: 1000ms;
+  padding-top: 20px;
+
 }
 
 @media (max-width: 800px) {

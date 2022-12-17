@@ -2,15 +2,15 @@
   display: flex;
   gap: 1rem;
   background-color: white;
-  overflow-x: hidden;
+  overflow-x: auto;
   height: 55px;
-  width: 80%;
+  width: 200%;
 
   margin-top: 3.5rem;
   margin-left: 10rem;
   position: fixed;
   top: 0px;
-  z-index: 98;
+  z-index: 95;
   align-items: center;
   justify-content: center;
 }

@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 function Search({ onSearch }) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [active, setActive] = useState(false)
 
   const onSearchChange = (event) => {
     setTitle(event.target.value);
@@ -15,17 +16,27 @@ function Search({ onSearch }) {
     onSearch(title);
     navigate("/searchPage");
   };
+
+  const makeActive = () => {
+    if(window.innerWidth < 900){
+    setActive(!active)
+    }
+  }
+  
+  let searchClass = !active ? 'active' : ''
+
   return (
     <div className='Search'>
-      <form onSubmit={title.length > 0 ? onSubmit : null}>
+      <form onSubmit={title.length > 0 ? onSubmit : makeActive}>
         <input
           onChange={onSearchChange}
-          id='video-Search'
+        
+          className={['video-Search', `${searchClass}` ].join(' ')}
           type='text'
           placeholder='Search'
         />
         <div
-          onClick={title.length > 0 ? onSubmit : null}
+          onClick={title.length > 0 ? onSubmit : makeActive}
           className='searchIcon'
         >
           <AiOutlineSearch size={25} />

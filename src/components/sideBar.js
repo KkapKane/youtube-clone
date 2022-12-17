@@ -33,68 +33,71 @@ export default function SideBar({ refreshCategory, isSideBar }) {
       <div className='home'>
         <div id='sideTab'>
           <AiFillHome />
-          Home
+          <span>Home</span>
         </div>
 
         <div id='sideTab'>
-          <BsPlayBtnFill /> Shorts
+          <BsPlayBtnFill /> <span>Shorts</span>
         </div>
         <div id='sideTab'>
-          <BsCollectionPlayFill /> Subscriptions
+          <BsCollectionPlayFill /> <span>Subscription</span>
         </div>
       </div>
       <div className='libraryHistory'>
         <div id='sideTab'>
-          <MdVideoLibrary /> Library
+          <MdVideoLibrary /> <span>Library</span>
         </div>
         <div id='sideTab'>
           {" "}
-          <BiHistory /> History
+          <BiHistory /> <span> History</span>
         </div>
       </div>
       <div className='explore'>
-        <h4> Explore </h4>
+        <span>
+        
+          <h4> Explore </h4>
+        </span>
 
         <div id='sideTab'>
-          {" "}
-          <AiFillFire /> Trending
+        
+          <AiFillFire /> <span> Trending </span>
         </div>
         <div id='sideTab' onClick={() => refreshCategory(10)}>
-          <MdMusicNote /> Music
+          <MdMusicNote /> <span> Music </span>
         </div>
         <div id='sideTab'>
-          <MdLocalMovies /> Movie & TV
+          <MdLocalMovies /> <span> Movie & TV </span>
         </div>
         <div id='sideTab'>
-          <IoMdWifi /> Live
+          <IoMdWifi /> <span> Live </span>
         </div>
         <div id='sideTab' onClick={() => refreshCategory(20)}>
-          {" "}
-          <SiYoutubegaming /> Gaming
+      
+          <SiYoutubegaming /> <span> Gaming </span>
         </div>
         <div id='sideTab' onClick={() => refreshCategory(25)}>
-          {" "}
-          <BiNews /> News
+
+          <BiNews /> <span> News </span>
         </div>
         <div id='sideTab' onClick={() => refreshCategory(17)}>
-          {" "}
-          <AiFillTrophy /> Sports
+   
+          <AiFillTrophy /> <span> Sports </span>
         </div>
         <div id='sideTab'>
-          {" "}
-          <FaLightbulb /> Learning
+ 
+          <FaLightbulb /> <span> Learning </span>
         </div>
         <div id='sideTab'>
-          <GiClothesline /> Fashion & Beauty
+          <GiClothesline /> <span> Fashion & Beauty </span>
         </div>
         <div id='sideTab'>
-          <MdPodcasts /> Podcasts
+          <MdPodcasts /> <span> Podcasts </span>
         </div>
       </div>
       <div className='browseChannel'>
         <div id='sideTab'>
-          {" "}
-          <BsPlusCircle /> Browse Channels{" "}
+    
+          <BsPlusCircle /> <span> Browse Channels </span>
         </div>
       </div>
 
@@ -102,33 +105,33 @@ export default function SideBar({ refreshCategory, isSideBar }) {
         <h4>More from Youtube </h4>
 
         <div id='sideTab'>
-          {" "}
-          <AiFillYoutube className='icon' size={30} /> Youtube Premium
+        
+          <AiFillYoutube className='icon' size={30} /> <span> Youtube Premium </span>
         </div>
         <div id='sideTab'>
-          <SiYoutubemusic className='icon' size={30} /> Youtube Music
+          <SiYoutubemusic className='icon' size={30} /> <span> Youtube Music </span>
         </div>
         <div id='sideTab'>
-          {" "}
+          
           <TbMoodKid className='icon' size={30} /> Youtube Kids
         </div>
         <div id='sideTab'>
-          {" "}
+          
           <BiTv className='icon' size={30} /> Youtube TV
         </div>
       </div>
       <div className='Settings'>
         <div id='sideTab'>
-          <AiFillSetting /> Settings
+          <AiFillSetting /> <span> Settings</span>
         </div>
         <div id='sideTab'>
-          <AiFillFlag /> Report History
+          <AiFillFlag /> <span> Report History</span>
         </div>
         <div id='sideTab'>
-          <BsFillQuestionCircleFill /> Help
+          <BsFillQuestionCircleFill /> <span> Help</span>
         </div>
         <div id='sideTab'>
-          <MdFeedback /> Send feedback
+          <MdFeedback /> <span> Send feedback</span>
         </div>
       </div>
     </div>

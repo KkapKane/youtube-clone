@@ -1,8 +1,7 @@
 .HomePage {
   display: flex;
   justify-content: center;
-
-  padding-left: 15rem;
+  
   padding-top: 3rem;
   height: 100%;
 
@@ -93,6 +92,7 @@
     display: flex;
     padding: 0 !important;
     max-height: 100%;
+    overflow-x: hidden;
   }
   .HomePageContent {
     justify-content: center;

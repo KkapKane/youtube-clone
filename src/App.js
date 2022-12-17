@@ -172,6 +172,7 @@ function App() {
               PopularVid={PopularVid}
               page={page}
               apiKey={apiKey}
+              isSideBar={isSideBar}
               loading={loading}
             />
           }
